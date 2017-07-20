@@ -29,20 +29,6 @@ class SocialMenuItemsProvider: SideMenuItemsProvider {
         }
     }
     
-    var items = [
-        State.authenticated:[(title: "Home", image: UIImage(asset: Asset.iconLiked)),
-            (title: "Sign In", image: UIImage(asset: Asset.iconLiked)),
-            (title: "Search", image: UIImage(asset: Asset.iconSearch)),
-            (title: "Popular", image: UIImage(asset: Asset.iconPopular)),
-            (title: "My pins", image: UIImage(asset: Asset.iconPins)),
-            (title: "Activity Feed", image: UIImage(asset: Asset.iconActivity)),
-            (title: "Settings", image: UIImage(asset: Asset.iconSettings)),
-            (title: "Log out", image: UIImage(asset: Asset.iconLogout))],
-        State.unauthenticated:[(title: "Popular", image: UIImage(asset: Asset.iconPopular)),
-            (title: "Sign In", image: UIImage(asset: Asset.iconLiked)),
-        ]
-    ]
-    
     func numberOfItems() -> Int {
         return items[state]!.count
     }
@@ -54,28 +40,40 @@ class SocialMenuItemsProvider: SideMenuItemsProvider {
     func title(forItem index: Int) -> String {
         return items[state]![index].title
     }
-    
+
     func destination(forItem index: Int) -> UIViewController {
         
-        guard let route = Route(rawValue: index) else {
+        guard let builder = items[.authenticated]?[index].builder else {
             return UIViewController()
         }
         
-        var destinationVC: UIViewController? = nil
-        
-        switch route {
-        case .home:
-            
-            destinationVC = UIViewController()
-            destinationVC?.view.backgroundColor = UIColor.purple
-            
-        case .signin:
-            
-            let loginModule = LoginConfigurator()
-            loginModule.configure(moduleOutput: coordinator)
-            destinationVC = loginModule.viewController
-        }
-        
-        return destinationVC!
+        return builder(self.coordinator)
     }
+    
+    // MARK: Items
+    
+    typealias ModuleBuilder = (_ coordinator: CrossModuleCoordinator) -> UIViewController
+    
+    static var builderForSignIn: ModuleBuilder = { coordinator in
+        
+        let module = LoginConfigurator()
+        module.configure(moduleOutput: coordinator)
+        return module.viewController
+    }
+    
+    static var builderForDummy: ModuleBuilder = { coordinator in
+        return UIViewController()
+    }
+    
+    var items = [State.authenticated: [
+        (title: "Home", image: UIImage(asset: Asset.iconHome), builder: builderForDummy),
+        (title: "Search", image: UIImage(asset: Asset.iconSearch), builder: builderForDummy),
+        (title: "Popular", image: UIImage(asset: Asset.iconPopular), builder: builderForDummy),
+        (title: "My pins", image: UIImage(asset: Asset.iconPins), builder: builderForDummy),
+        (title: "Activity Feed", image: UIImage(asset: Asset.iconActivity), builder: builderForDummy),
+        (title: "Settings", image: UIImage(asset: Asset.iconSettings), builder: builderForDummy)
+        ], State.unauthenticated: [
+            (title: "Search", image: UIImage(asset: Asset.iconSearch), builder: builderForDummy),
+            (title: "Popular", image: UIImage(asset: Asset.iconPopular), builder: builderForDummy)
+        ]]
 }
