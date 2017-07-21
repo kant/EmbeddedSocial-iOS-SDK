@@ -1,0 +1,18 @@
+//
+//  HomeHomePresenter.swift
+//  MSGP-Framework
+//
+//  Created by igor.popov on 21/07/2017.
+//  Copyright © 2017 akvelon. All rights reserved.
+//
+
+class HomePresenter: HomeModuleInput, HomeViewOutput, HomeInteractorOutput {
+
+    weak var view: HomeViewInput!
+    var interactor: HomeInteractorInput!
+    var router: HomeRouterInput!
+
+    func viewIsReady() {
+
+    }
+}
