@@ -30,11 +30,6 @@ class SideMenuAccountInfoView: UIControl {
         accountImage.contentMode = .scaleAspectFit
         accountName.textColor = UIColor.white
         
-        //default data
-        accountName.text = "Sign in"
-        accountImage.image = UIImage(asset: .userPhotoPlaceholder)
-        // constraints
-        
         addSubview(accountImage)
         accountImage.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()

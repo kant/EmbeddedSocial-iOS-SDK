@@ -87,7 +87,7 @@ class SideMenuPresenter: SideMenuModuleInput, SideMenuViewOutput, SideMenuIntera
     }
     
     func didTapAccountInfo() {
-        print("presenter tap acc info")
+        self.router.openLogin()
     }
     
     func didToggleSection(with index: Int) {

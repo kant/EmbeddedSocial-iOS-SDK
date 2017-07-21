@@ -5,7 +5,7 @@
 
 class CrossModuleCoordinator {
   
-    weak var menuModule: SideMenuModuleInput!
+    weak var menuModule: SideMenuModuleInput! // TODO: replace with container
     weak var socialPlus: SocialPlus!
 
 }
