@@ -16,6 +16,8 @@ extension CrossModuleCoordinator: LoginModuleOutput {
         self.socialPlus.modelStack = ModelStack(user: user, sessionToken: sessionToken)
         self.menuModule.showUser(user: user)
         
+        print(user.credentials.authHeader)
+        
         let nextVC = UIViewController()
         nextVC.view.backgroundColor = UIColor.green
         

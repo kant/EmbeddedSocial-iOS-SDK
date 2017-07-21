@@ -14,4 +14,10 @@ protocol HomeViewInput: class {
     */
 
     func setupInitialState()
+    
+//    func showRefresh()
+//    func didRefresh(error: String)
+//    func showAsGrid()
+//    func showAsTable()
+    
 }
