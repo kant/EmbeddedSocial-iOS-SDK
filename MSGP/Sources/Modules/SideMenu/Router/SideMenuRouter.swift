@@ -18,8 +18,5 @@ class SideMenuRouter: SideMenuRouterInput {
         coordinator.openLoginScreen()
     }
     
-    func openMyProfile() {
-        coordinator.openMyProfile()
-    }
 }
 

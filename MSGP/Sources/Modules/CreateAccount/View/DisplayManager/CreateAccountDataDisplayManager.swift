@@ -138,7 +138,7 @@ extension CreateAccountDataDisplayManager: UITableViewDelegate {
         let item = sections[indexPath.section].items[indexPath.row]
         switch item {
         case .uploadPhoto:
-            return Constants.CreateAccount.uploadPhotoHeight
+            return Constants.createAccount.uploadPhotoHeight
         case .firstName, .lastName:
             return Constants.standardCellHeight
         case .bio:

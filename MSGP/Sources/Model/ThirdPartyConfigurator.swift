@@ -8,28 +8,24 @@ import FBSDKCoreKit
 import TwitterKit
 import GoogleSignIn
 
-protocol ThirdPartyConfiguratorType {
-    func setup(application: UIApplication, launchOptions: [AnyHashable: Any])
-}
+class ThirdPartyConfigurator {
 
-struct ThirdPartyConfigurator: ThirdPartyConfiguratorType {
-
-    func setup(application: UIApplication, launchOptions: [AnyHashable: Any]) {
+    static func setup(application: UIApplication, launchOptions: [AnyHashable: Any]) {
         setupTwitter()
         setupFacebook(application: application, launchOptions: launchOptions)
         setupGoogle()
     }
     
-    private func setupTwitter() {
+    private static func setupTwitter() {
         Twitter.sharedInstance().start(withConsumerKey: Keys.twitterConsumerKey,
                                        consumerSecret: Keys.twitterConsumerSecret)
     }
     
-    private func setupFacebook(application: UIApplication, launchOptions: [AnyHashable: Any]) {
+    private static func setupFacebook(application: UIApplication, launchOptions: [AnyHashable: Any]) {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    private func setupGoogle() {
+    private static func setupGoogle() {
         GIDSignIn.sharedInstance().clientID = "725637580373-0ssr452m7o5bg1aeomsts88ci6tvmp83.apps.googleusercontent.com"
     }
 }

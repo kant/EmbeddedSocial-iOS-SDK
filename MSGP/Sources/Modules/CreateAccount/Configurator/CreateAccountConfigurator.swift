@@ -14,9 +14,11 @@ class CreateAccountConfigurator {
     }
 
     func configure(user: SocialUser, moduleOutput: CreateAccountModuleOutput?) {
+        let router = CreateAccountRouter()
+
         let presenter = CreateAccountPresenter(user: user)
         presenter.view = viewController
-        presenter.router = CreateAccountRouter()
+        presenter.router = router
         presenter.interactor = CreateAccountInteractor(userService: UserService())
         presenter.moduleOutput = moduleOutput
         
