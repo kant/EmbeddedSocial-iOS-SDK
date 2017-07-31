@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C8BBABED5B42C9A725D4D5A /* PostDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAC92B1156FB1189078419E /* PostDetailConfigurator.swift */; };
+		25439D4CEF3CBE6DA3648193 /* PostDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8943B185937BA09220565 /* PostDetailViewTests.swift */; };
+		28897CF384599F5714F58F95 /* PostDetailViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34659337C7985D24061E84D /* PostDetailViewOutput.swift */; };
+		2CD9C82C99C01D0144183B5C /* PostDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FCCA1B7A5DA577E36F0D84 /* PostDetailInteractor.swift */; };
+		3172734293FFC649573AF17D /* PostDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A044FDBAF57C31E358CA4BC9 /* PostDetailInteractorTests.swift */; };
+		35BDDF46F8B7FB1FA36E0FF5 /* PostDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DC79A203B9520A3537D2B /* PostDetailPresenter.swift */; };
+		4092ACA6718C10F23B062123 /* PostDetailConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE793447AE9094510179EA3 /* PostDetailConfiguratorTests.swift */; };
+		569FEF6CEFF0CAFE928B8AFB /* PostDetailModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED5F6B0FB2C06F170A349F /* PostDetailModuleInput.swift */; };
+		62CDB868CCA88BA51665BCA7 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC650A71CEB4287E988533 /* PostDetailViewController.swift */; };
 		63A1D6FB1F25E78D0090C67A /* TopicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D6FA1F25E78D0090C67A /* TopicService.swift */; };
 		63A1D7011F262D1B0090C67A /* Photo+JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D7001F262D1B0090C67A /* Photo+JSONEncodable.swift */; };
 		63A1D7051F2740910090C67A /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D7041F2740910090C67A /* Cache.swift */; };
@@ -17,6 +26,8 @@
 		63A1D7251F2A04EB0090C67A /* MockCreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D7241F2A04EB0090C67A /* MockCreatePostViewController.swift */; };
 		63A1D7261F2A23F30090C67A /* CreatePostInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889AFC091F220BCD003AAF19 /* CreatePostInteractorTests.swift */; };
 		63A1D7281F2A24900090C67A /* MockCreatePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D7271F2A24900090C67A /* MockCreatePostPresenter.swift */; };
+		6CD54D1005CD9F607076D614 /* PostDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03FB55A525E249421F825A9 /* PostDetailPresenterTests.swift */; };
+		6FF2A5139FB4E4C46A261FEB /* PostDetailInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5AEE73467B2C64D04C182C /* PostDetailInitializer.swift */; };
 		88087B461F2A431E00A33E9A /* ButtonDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88087B451F2A431E00A33E9A /* ButtonDecorator.swift */; };
 		88087B4A1F2B4DD100A33E9A /* MockThirdPartyConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88087B491F2B4DD100A33E9A /* MockThirdPartyConfigurator.swift */; };
 		881060F91F28E502008CA2FB /* UIButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881060F81F28E502008CA2FB /* UIButtonStyles.swift */; };
@@ -358,9 +369,15 @@
 		8EF0E5CC1F2AA2D000E88ED6 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0E5CB1F2AA2D000E88ED6 /* TextField.swift */; };
 		8EF0E5CE1F2AA66800E88ED6 /* CreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0E5CD1F2AA66800E88ED6 /* CreatePost.swift */; };
 		8EF0E5D01F2AB17000E88ED6 /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0E5CF1F2AB17000E88ED6 /* Readme.md */; };
+		90C940663062CF418BF5BCB9 /* PostDetailRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6194118B48073A77E48EE5C0 /* PostDetailRouterTests.swift */; };
 		9C43EC921F263A6F00D0B59D /* SideMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C43EC911F263A6F00D0B59D /* SideMenuButton.swift */; };
 		9CBA39ED1F1F7E88007EB52C /* EmbeddedSocial-Example-MenuHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA39EC1F1F7E88007EB52C /* EmbeddedSocial-Example-MenuHandler.swift */; };
 		9CD805331F0D012F00B9B0AC /* EmbeddedSocial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD805291F0D012F00B9B0AC /* EmbeddedSocial.framework */; };
+		A64CDDD772F15DC12688C654 /* PostDetailViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0883A8E4D602F9431094601F /* PostDetailViewInput.swift */; };
+		A8FE06D9ECD352CC1A6BB101 /* PostDetailInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87FB356ECB1ACDB40CF39EC /* PostDetailInteractorInput.swift */; };
+		B2028A7B95B88824262F98EB /* PostDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98B8283AB58D6BC75833D38 /* PostDetailRouter.swift */; };
+		DFBF2016FEF33D6C2D71A736 /* PostDetailRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A711D2D4995A332D3216B072 /* PostDetailRouterInput.swift */; };
+		F842DDC52CF0E0E783FB215A /* PostDetailInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A300DB0B9DA6F57AFE9BEDE /* PostDetailInteractorOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -411,6 +428,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0883A8E4D602F9431094601F /* PostDetailViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailViewInput.swift; sourceTree = "<group>"; };
+		0CAC92B1156FB1189078419E /* PostDetailConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailConfigurator.swift; sourceTree = "<group>"; };
+		435DC79A203B9520A3537D2B /* PostDetailPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailPresenter.swift; sourceTree = "<group>"; };
+		5A300DB0B9DA6F57AFE9BEDE /* PostDetailInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailInteractorOutput.swift; sourceTree = "<group>"; };
+		5AED5F6B0FB2C06F170A349F /* PostDetailModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailModuleInput.swift; sourceTree = "<group>"; };
+		6194118B48073A77E48EE5C0 /* PostDetailRouterTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailRouterTests.swift; sourceTree = "<group>"; };
 		63A1D6FA1F25E78D0090C67A /* TopicService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicService.swift; sourceTree = "<group>"; };
 		63A1D7001F262D1B0090C67A /* Photo+JSONEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+JSONEncodable.swift"; sourceTree = "<group>"; };
 		63A1D7041F2740910090C67A /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
@@ -778,6 +801,17 @@
 		9CD805291F0D012F00B9B0AC /* EmbeddedSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EmbeddedSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD805321F0D012F00B9B0AC /* EmbeddedSocialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmbeddedSocialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD805391F0D012F00B9B0AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A03FB55A525E249421F825A9 /* PostDetailPresenterTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailPresenterTests.swift; sourceTree = "<group>"; };
+		A044FDBAF57C31E358CA4BC9 /* PostDetailInteractorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailInteractorTests.swift; sourceTree = "<group>"; };
+		A711D2D4995A332D3216B072 /* PostDetailRouterInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailRouterInput.swift; sourceTree = "<group>"; };
+		A7FCCA1B7A5DA577E36F0D84 /* PostDetailInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailInteractor.swift; sourceTree = "<group>"; };
+		B98B8283AB58D6BC75833D38 /* PostDetailRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailRouter.swift; sourceTree = "<group>"; };
+		BBE793447AE9094510179EA3 /* PostDetailConfiguratorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailConfiguratorTests.swift; sourceTree = "<group>"; };
+		DD5AEE73467B2C64D04C182C /* PostDetailInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailInitializer.swift; sourceTree = "<group>"; };
+		E34659337C7985D24061E84D /* PostDetailViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailViewOutput.swift; sourceTree = "<group>"; };
+		E87FB356ECB1ACDB40CF39EC /* PostDetailInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailInteractorInput.swift; sourceTree = "<group>"; };
+		F0EC650A71CEB4287E988533 /* PostDetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		FCB8943B185937BA09220565 /* PostDetailViewTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostDetailViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -814,6 +848,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00A09AC19AF05C346F66DC9E /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				0CAC92B1156FB1189078419E /* PostDetailConfigurator.swift */,
+				DD5AEE73467B2C64D04C182C /* PostDetailInitializer.swift */,
+			);
+			name = Configurator;
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		067FE3EB92B234082141C861 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A03FB55A525E249421F825A9 /* PostDetailPresenterTests.swift */,
+			);
+			name = Presenter;
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0F6AB9CD8CDA59F1A402CA76 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				BBE793447AE9094510179EA3 /* PostDetailConfiguratorTests.swift */,
+			);
+			name = Configurator;
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		1D46CDC61A0B4D2C561B162D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E87FB356ECB1ACDB40CF39EC /* PostDetailInteractorInput.swift */,
+				5A300DB0B9DA6F57AFE9BEDE /* PostDetailInteractorOutput.swift */,
+				A7FCCA1B7A5DA577E36F0D84 /* PostDetailInteractor.swift */,
+			);
+			name = Interactor;
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		2C6B77FF4F1F2F71CA420D6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,6 +899,47 @@
 				886B3ACD1F13ABEA00BF1A8E /* SVProgressHUD.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45C7F46C58C5DE3AF3A8B258 /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0F6AB9CD8CDA59F1A402CA76 /* Configurator */,
+				5504F6B5393CA7589331F241 /* View */,
+				4B8B181B2580B4D1815E740F /* Interactor */,
+				067FE3EB92B234082141C861 /* Presenter */,
+				94E5C98F3842B5915F3502C3 /* Router */,
+			);
+			name = PostDetail;
+			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		4B8B181B2580B4D1815E740F /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				A044FDBAF57C31E358CA4BC9 /* PostDetailInteractorTests.swift */,
+			);
+			name = Interactor;
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		5504F6B5393CA7589331F241 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FCB8943B185937BA09220565 /* PostDetailViewTests.swift */,
+			);
+			name = View;
+			path = View;
+			sourceTree = "<group>";
+		};
+		61B1CB36B51CD0DB7453383F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				A711D2D4995A332D3216B072 /* PostDetailRouterInput.swift */,
+				B98B8283AB58D6BC75833D38 /* PostDetailRouter.swift */,
+			);
+			name = Router;
+			path = Router;
 			sourceTree = "<group>";
 		};
 		63A1D6F81F25E7800090C67A /* API */ = {
@@ -860,6 +974,19 @@
 				63A1D7271F2A24900090C67A /* MockCreatePostPresenter.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		75241263B3888504EA48996C /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				915977DEAA75768D57BA85CB /* View */,
+				D2332A174802D0CEB2CB475C /* Presenter */,
+				1D46CDC61A0B4D2C561B162D /* Interactor */,
+				61B1CB36B51CD0DB7453383F /* Router */,
+				00A09AC19AF05C346F66DC9E /* Configurator */,
+			);
+			name = PostDetail;
+			path = PostDetail;
 			sourceTree = "<group>";
 		};
 		882AD0B41F221D4400FC20B7 /* CoreData */ = {
@@ -1226,6 +1353,7 @@
 				88580B6C1F2213AB00C1CBAF /* SideMenu */,
 				88580B801F2213AB00C1CBAF /* TabMenuContainer */,
 				88BC5C3E1F2B65D0001FBDD2 /* UserProfile */,
+				75241263B3888504EA48996C /* PostDetail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1937,6 +2065,35 @@
 			name = UIObjects;
 			sourceTree = "<group>";
 		};
+		915977DEAA75768D57BA85CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0883A8E4D602F9431094601F /* PostDetailViewInput.swift */,
+				E34659337C7985D24061E84D /* PostDetailViewOutput.swift */,
+				F0EC650A71CEB4287E988533 /* PostDetailViewController.swift */,
+			);
+			name = View;
+			path = View;
+			sourceTree = "<group>";
+		};
+		94E5C98F3842B5915F3502C3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				6194118B48073A77E48EE5C0 /* PostDetailRouterTests.swift */,
+			);
+			name = Router;
+			path = Router;
+			sourceTree = "<group>";
+		};
+		96CA6A2F6B126AA2147FA8D7 /* ModulesTests */ = {
+			isa = PBXGroup;
+			children = (
+				45C7F46C58C5DE3AF3A8B258 /* PostDetail */,
+			);
+			name = ModulesTests;
+			path = ModulesTests;
+			sourceTree = "<group>";
+		};
 		9C223D1E1F0FA3390058B60A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1954,6 +2111,7 @@
 				9CD805361F0D012F00B9B0AC /* EmbeddedSocialTests */,
 				8EF0E5931F1FA5CC00E88ED6 /* EmbeddedSocialUITests */,
 				9CD8052A1F0D012F00B9B0AC /* Products */,
+				96CA6A2F6B126AA2147FA8D7 /* ModulesTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1993,6 +2151,16 @@
 				9CD805391F0D012F00B9B0AC /* Info.plist */,
 			);
 			path = EmbeddedSocialTests;
+			sourceTree = "<group>";
+		};
+		D2332A174802D0CEB2CB475C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5AED5F6B0FB2C06F170A349F /* PostDetailModuleInput.swift */,
+				435DC79A203B9520A3537D2B /* PostDetailPresenter.swift */,
+			);
+			name = Presenter;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2504,6 +2672,18 @@
 				88580C6C1F2213AB00C1CBAF /* TabMenuContainerModuleInput.swift in Sources */,
 				88580BB61F2213AB00C1CBAF /* TextFieldCell.swift in Sources */,
 				88580BED1F2213AB00C1CBAF /* PostCommentRequest.swift in Sources */,
+				A64CDDD772F15DC12688C654 /* PostDetailViewInput.swift in Sources */,
+				28897CF384599F5714F58F95 /* PostDetailViewOutput.swift in Sources */,
+				62CDB868CCA88BA51665BCA7 /* PostDetailViewController.swift in Sources */,
+				569FEF6CEFF0CAFE928B8AFB /* PostDetailModuleInput.swift in Sources */,
+				35BDDF46F8B7FB1FA36E0FF5 /* PostDetailPresenter.swift in Sources */,
+				A8FE06D9ECD352CC1A6BB101 /* PostDetailInteractorInput.swift in Sources */,
+				F842DDC52CF0E0E783FB215A /* PostDetailInteractorOutput.swift in Sources */,
+				2CD9C82C99C01D0144183B5C /* PostDetailInteractor.swift in Sources */,
+				DFBF2016FEF33D6C2D71A736 /* PostDetailRouterInput.swift in Sources */,
+				B2028A7B95B88824262F98EB /* PostDetailRouter.swift in Sources */,
+				1C8BBABED5B42C9A725D4D5A /* PostDetailConfigurator.swift in Sources */,
+				6FF2A5139FB4E4C46A261FEB /* PostDetailInitializer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2577,6 +2757,11 @@
 				88635D771F223F1600577140 /* CoreDataStackBuilderTests.swift in Sources */,
 				88F7A7A91F2890B1005FEC5F /* MockCreateAccountView.swift in Sources */,
 				889AFC301F220BCD003AAF19 /* NameComponentsSplitterTests.swift in Sources */,
+				4092ACA6718C10F23B062123 /* PostDetailConfiguratorTests.swift in Sources */,
+				25439D4CEF3CBE6DA3648193 /* PostDetailViewTests.swift in Sources */,
+				3172734293FFC649573AF17D /* PostDetailInteractorTests.swift in Sources */,
+				6CD54D1005CD9F607076D614 /* PostDetailPresenterTests.swift in Sources */,
+				90C940663062CF418BF5BCB9 /* PostDetailRouterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
