@@ -9,5 +9,5 @@
 import Foundation
 
 protocol PostDetailInteractorInput {
-
+    func fetchComments(topicHandle: String)
 }

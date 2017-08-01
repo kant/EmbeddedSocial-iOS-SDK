@@ -126,7 +126,7 @@ class HomePresenter: HomeModuleInput, HomeViewOutput, HomeInteractorOutput {
     }
     
     func didTapItem(path: IndexPath) {
-//        router.open(route: .postDetails)
+        router.open(route: .postDetails, post: items[path.row])
     }
     
     // MARK: HomeInteractorOutput
@@ -180,11 +180,11 @@ class HomePresenter: HomeModuleInput, HomeViewOutput, HomeInteractorOutput {
     }
     
     private func didTapComment(with path: IndexPath) {
-        router.open(route: .comments)
+        router.open(route: .comments, post: items[path.row])
     }
     
     private func didTapExtra(with path: IndexPath) {
-        router.open(route: .extra)
+        router.open(route: .extra, post: items[path.row])
     }
     
     private func didTapLike(with path: IndexPath) {

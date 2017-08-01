@@ -14,4 +14,6 @@ protocol PostDetailViewOutput {
     */
 
     func viewIsReady()
+    func numberOfItems() -> Int
+    func commentForPath(path: IndexPath) -> Comment
 }

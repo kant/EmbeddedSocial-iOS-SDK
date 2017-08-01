@@ -16,7 +16,7 @@ class PostDetailModuleInitializer: NSObject {
     override func awakeFromNib() {
 
         let configurator = PostDetailModuleConfigurator()
-        configurator.configureModuleForViewInput(viewInput: postdetailViewController)
+//        configurator.configureModuleForViewInput(viewInput: postdetailViewController)
     }
 
 }

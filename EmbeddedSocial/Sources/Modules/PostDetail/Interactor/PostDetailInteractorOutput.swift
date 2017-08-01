@@ -9,5 +9,7 @@
 import Foundation
 
 protocol PostDetailInteractorOutput: class {
-
+    func didFetch(comments: [Comment])
+    func didFetchMore(comments: [Comment])
+    func didFail(error: CommentsServiceError)
 }

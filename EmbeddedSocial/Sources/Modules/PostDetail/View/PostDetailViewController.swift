@@ -23,16 +23,21 @@ class PostDetailViewController: BaseViewController, PostDetailViewInput {
         output.viewIsReady()
     }
 
-
     // MARK: PostDetailViewInput
     func setupInitialState() {
         configTableView()
     }
     
     func configTableView() {
+        tableView.register(UINib(nibName: CommentCell.identifier, bundle: Bundle(for: CommentCell.self)), forCellReuseIdentifier: CommentCell.identifier)
+        tableView.estimatedRowHeight = CommentCell.defaultHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: CommentCell.identifier, bundle: nil), forCellReuseIdentifier: CommentCell.identifier)
+    }
+    
+    func reload() {
+        tableView.reloadData()
     }
     
     @IBAction func postComment(_ sender: Any) {
@@ -41,13 +46,31 @@ class PostDetailViewController: BaseViewController, PostDetailViewInput {
 
 extension PostDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifier, for: indexPath)
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifier, for: indexPath) as? CommentCell
+        cell?.config(comment: output.commentForPath(path: indexPath))
+        cell?.delegate = self
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return output.numberOfItems()
     }
+}
+
+extension PostDetailViewController: CommentCellDelegate {
+    func like(cell: CommentCell) {
+        let comment = output.commentForPath(path: tableView.indexPath(for: cell)!)
+        if comment.liked {
+            
+        } else {
+            
+        }
+    }
+    
+    func toReplies() {
+        
+    }
+    
 }
 
 extension PostDetailViewController: UITableViewDelegate {

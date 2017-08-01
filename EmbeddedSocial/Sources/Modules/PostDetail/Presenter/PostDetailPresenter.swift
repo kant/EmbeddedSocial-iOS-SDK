@@ -11,8 +11,34 @@ class PostDetailPresenter: PostDetailModuleInput, PostDetailViewOutput, PostDeta
     weak var view: PostDetailViewInput!
     var interactor: PostDetailInteractorInput!
     var router: PostDetailRouterInput!
-
+    
+    var post: Post?
+    var comments = [Comment]()
+    
     func viewIsReady() {
-
+        view.setupInitialState()
+        interactor.fetchComments(topicHandle: (post?.topicHandle)!)
+    }
+    
+    func didFetch(comments: [Comment]) {
+        self.comments = comments
+        view.reload()
+    }
+    
+    func didFetchMore(comments: [Comment]) {
+        
+    }
+    
+    func didFail(error: CommentsServiceError) {
+        
+    }
+    
+    // MAKR: PostDetailViewOutput
+    func numberOfItems() -> Int {
+        return comments.count
+    }
+    
+    func commentForPath(path: IndexPath) -> Comment {
+        return comments[path.row]
     }
 }

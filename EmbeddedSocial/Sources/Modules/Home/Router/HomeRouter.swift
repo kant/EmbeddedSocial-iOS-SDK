@@ -7,10 +7,11 @@ class HomeRouter: HomeRouterInput {
     
     weak var viewController: UIViewController?
     
-    func open(route: HomeRoutes) {
-        let dummy = UIViewController()
-        dummy.title = route.rawValue
-        viewController?.navigationController?.pushViewController(dummy, animated: true)
+    func open(route: HomeRoutes, post: Post) {
+        let configurator = PostDetailModuleConfigurator()
+        let vc = StoryboardScene.PostDetail.instantiatePostDetailViewController()
+        configurator.configure(viewController: vc, post: post)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

@@ -10,23 +10,19 @@ import UIKit
 
 class PostDetailModuleConfigurator {
 
-    func configureModuleForViewInput<UIViewController>(viewInput: UIViewController) {
-
-        if let viewController = viewInput as? PostDetailViewController {
-            configure(viewController: viewController)
-        }
-    }
-
-    private func configure(viewController: PostDetailViewController) {
+    func configure(viewController: PostDetailViewController, post: Post) {
 
         let router = PostDetailRouter()
 
         let presenter = PostDetailPresenter()
         presenter.view = viewController
         presenter.router = router
+        presenter.post = post
 
         let interactor = PostDetailInteractor()
         interactor.output = presenter
+        let commentsService = CommentsService()
+        interactor.commentsService = commentsService
 
         presenter.interactor = interactor
         viewController.output = presenter

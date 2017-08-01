@@ -14,4 +14,5 @@ protocol PostDetailViewInput: class {
     */
 
     func setupInitialState()
+    func reload()
 }

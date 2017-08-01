@@ -14,6 +14,6 @@ enum HomeRoutes: String {
 
 protocol HomeRouterInput {
     
-    func open(route: HomeRoutes)
+    func open(route: HomeRoutes, post: Post)
 
 }
