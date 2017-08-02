@@ -22,7 +22,7 @@ class PostDetailInteractor: PostDetailInteractorInput {
             }
 
             self.cursor = result.cursor
-            self.output.didFetch(comments: result.comments)
+            self.output.didFetch(comments: result.comments.reversed())
         })
     }
 }

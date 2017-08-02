@@ -11,6 +11,7 @@ import UIKit
 protocol CommentCellDelegate: class {
     func like(cell: CommentCell)
     func toReplies()
+    func mediaLoaded()
 }
 
 class CommentCell: UITableViewCell {
@@ -50,15 +51,18 @@ class CommentCell: UITableViewCell {
         commentTextLabel.text = comment.text
         usernameLabel.text = "\(comment.firstName ?? "") \(comment.lastName ?? "")"
         if let url = comment.mediaUrl {
+            mediaButton.imageView?.contentMode = .scaleAspectFill
             mediaButton.setPhotoWithCaching(Photo(uid: UUID().uuidString,
                                                   url: url,
                                                   image: nil),
-                                            placeholder: UIImage(asset: .userPhotoPlaceholder))
-            mediaButtonHeightConstraint.constant = 250
+                                            placeholder: UIImage(asset: .placeholderPostNoimage))
+            mediaButtonHeightConstraint.constant = UIScreen.main.bounds.size.height/3
+            
         } else {
-            mediaButtonHeightConstraint.constant = 999
+            mediaButtonHeightConstraint.constant = 0
         }
         contentView.layoutIfNeeded()
+        
         // TODO: full fit
         
     }

@@ -154,7 +154,7 @@
                             <constraint firstItem="txa-Hd-zHB" firstAttribute="leading" secondItem="ugF-Tq-MnT" secondAttribute="trailing" constant="8" id="xwF-TX-9ex"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmM-ka-cUp">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmM-ka-cUp">
                         <rect key="frame" x="20" y="58" width="292" height="46"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="999" constant="46" id="QuR-I2-7RW"/>

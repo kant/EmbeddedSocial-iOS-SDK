@@ -37,9 +37,9 @@ extension UIButton {
         }
         
         if let image = photo.image {
-            setImage(image, for: .normal)
+            setImage(image.scaledToFit(toSize: CGSize(width: UIScreen.main.bounds.size.width - 40, height: 50)), for: .normal)
         } else if let cachedImage = ImageCacheAdapter.shared.image(for: photo) {
-            setImage(cachedImage, for: .normal)
+            setImage(cachedImage.scaledToFit(toSize: CGSize(width: UIScreen.main.bounds.size.width - 40, height: cachedImage.size.height)), for: .normal)
         } else if let url = photo.url {
             sd_setImage(with: URL(string: url), for: .normal, placeholderImage: placeholder)
         }
