@@ -103,6 +103,11 @@ extension CreatePostViewController: ImagePickerDelegate {
         mediaButton.setImage(resizedImage, for: .normal)
         view.layoutIfNeeded()
     }
+    
+    func removePhoto() {
+        self.photo = nil
+        mediaButton.setImage( UIImage(asset: .placeholderPostNoimage), for: .normal)
+    }
 }
 
 // MARK: UITextViewDelegate

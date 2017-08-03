@@ -12,6 +12,7 @@ struct Button {
         static let leavePost = NSLocalizedString("Leave post", comment: "")
         static let chooseExisting = NSLocalizedString("Chose existing", comment: "")
         static let takePhoto = NSLocalizedString("Take photo", comment: "")
+        static let removePhoto = NSLocalizedString("Remove photo", comment: "")
         static let post = NSLocalizedString("Post", comment: "")
     }
 }
