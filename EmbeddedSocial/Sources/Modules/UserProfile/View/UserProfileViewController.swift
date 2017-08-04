@@ -15,32 +15,12 @@ private let headerHeight = contentWidth / headerAspectRatio
 class UserProfileViewController: UIViewController {
     
     var output: UserProfileViewOutput!
-    var feedModule: FeedModuleInput!
     
-    @IBOutlet weak var containerScrollView: UIScrollView! {
+    @IBOutlet fileprivate weak var containerTableView: UITableView! {
         didSet {
-            containerScrollView.addSubview(summaryView)
-            summaryView.snp.makeConstraints { make in
-                make.left.equalTo(containerScrollView)
-                make.top.equalTo(containerScrollView).offset(containerInset)
-                make.width.equalTo(contentWidth)
-                make.height.equalTo(headerHeight)
-            }
-            
-            containerScrollView.addSubview(filterView)
-            filterView.snp.makeConstraints { make in
-                make.left.equalTo(containerScrollView)
-                make.top.equalTo(summaryView.snp.bottom).offset(containerInset).priority(.medium)
-                make.width.equalTo(contentWidth)
-                make.height.equalTo(filterHeight)
-                make.top.greaterThanOrEqualTo(containerScrollView.snp.top)
-            }
-            
-            let navBarHeight: CGFloat = 64.0
-            let feedHeight = UIScreen.main.bounds.height - filterHeight
-            let contentHeight = headerHeight + filterHeight + feedHeight + containerInset * 2 - navBarHeight
-            containerScrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
-            containerScrollView.delegate = self
+            containerTableView.backgroundColor = .clear
+            containerTableView.dataSource = self
+            containerTableView.delegate = self
         }
     }
     
@@ -65,7 +45,7 @@ class UserProfileViewController: UIViewController {
         summaryView.onFollowing = { self.output.onFollowing() }
         summaryView.onFollow = { self.output.onFollowRequest(currentStatus: $0) }
         summaryView.onFollowers = { self.output.onFollowers() }
-
+        summaryView.frame = CGRect(x: 0.0, y: 0.0, width: contentWidth, height: headerHeight)
         return summaryView
     }()
     
@@ -81,13 +61,22 @@ class UserProfileViewController: UIViewController {
         return filterView
     }()
     
-    private var feedModuleInput: FeedModuleInput!
-    
     fileprivate var feedView: UIView!
+    
+    fileprivate var feedModuleInput: FeedModuleInput!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewIsReady()
+    }
+}
+
+extension UserProfileViewController: UserProfileViewInput {
+    func setupInitialState() {
+        parent?.navigationItem.rightBarButtonItem = createPostButton
+        view.backgroundColor = Palette.extraLightGrey
+        containerTableView.tableHeaderView = embeddedIntoContainer(view: summaryView)
+        setupFeedModule()
     }
     
     fileprivate func setupFeedModule() {
@@ -114,24 +103,19 @@ class UserProfileViewController: UIViewController {
         //        }
     }
     
-    fileprivate func setupFeedView() {
-        containerScrollView.addSubview(feedView)
+    private func embeddedIntoContainer(view: UIView) -> UIView {
+        var containerFrame = view.frame
+        containerFrame.size.height += containerInset * 2
         
-        feedView.snp.makeConstraints { make in
-            make.top.equalTo(filterView.snp.bottom)
-            make.left.equalTo(containerScrollView)
-            make.width.equalTo(summaryView.snp.width)
-            make.height.equalTo(UIScreen.main.bounds.height - filterHeight)
-        }
-    }
-}
-
-extension UserProfileViewController: UserProfileViewInput {
-    func setupInitialState() {
-        parent?.navigationItem.rightBarButtonItem = createPostButton
-        view.backgroundColor = Palette.extraLightGrey
-        setupFeedModule()
-        setupFeedView()
+        let headerContainer = UIView(frame: containerFrame)
+        headerContainer.backgroundColor = Palette.extraLightGrey
+        headerContainer.addSubview(view)
+        
+        var viewFrame = view.frame
+        viewFrame.origin.y = containerInset
+        view.frame = viewFrame
+        
+        return headerContainer
     }
     
     func showError(_ error: Error) {
@@ -141,7 +125,7 @@ extension UserProfileViewController: UserProfileViewInput {
     func setIsLoading(_ isLoading: Bool) {
         loadingIndicatorView.isHidden = !isLoading
         loadingIndicatorView.isLoading = isLoading
-        containerScrollView.isHidden = isLoading
+        containerTableView.isHidden = isLoading
     }
     
     func setUser(_ user: User) {
@@ -161,10 +145,37 @@ extension UserProfileViewController: UserProfileViewInput {
     }
 }
 
-extension UserProfileViewController: UIScrollViewDelegate {
+extension UserProfileViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        print(scrollView.contentOffset, filterView.frame.origin)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "CellID")
+//        cell.textLabel?.text = "\(indexPath.row)"
+        if feedView.superview == nil {
+            cell.addSubview(feedView)
+            feedView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+        }
+        return cell
+    }
+}
+
+extension UserProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return filterView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return filterHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let navBarHeight: CGFloat = 64.0
+        let feedHeight = UIScreen.main.bounds.height - filterHeight
+        let contentHeight = headerHeight + filterHeight + feedHeight + containerInset * 2 - navBarHeight
+        return contentHeight
     }
 }
