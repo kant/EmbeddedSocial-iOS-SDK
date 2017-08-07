@@ -21,4 +21,6 @@ protocol FeedModuleViewOutput {
     func didAskFetchAll()
     func didAskFetchMore()
 
+    func didScrollFeed(_ feedView: UIScrollView)
+    func willScrollFeed(_ feedView: UIScrollView)
 }

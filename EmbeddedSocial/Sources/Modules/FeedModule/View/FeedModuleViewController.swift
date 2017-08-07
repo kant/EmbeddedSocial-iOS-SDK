@@ -24,7 +24,7 @@ enum FeedModuleLayoutType: Int {
 //
 //
 
-class FeedModuleViewController: UIViewController, FeedModuleViewInput, UIScrollViewDelegate {
+class FeedModuleViewController: UIViewController, FeedModuleViewInput {
     
     private struct Style {
         struct Collection  {
@@ -40,6 +40,10 @@ class FeedModuleViewController: UIViewController, FeedModuleViewInput, UIScrollV
     fileprivate var gridLayout = UICollectionViewFlowLayout()
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var feedView: CollectionView? {
+        return collectionView as? CollectionView
+    }
     
     lazy var refreshControl: UIRefreshControl = {
         let control = UIRefreshControl()
@@ -87,13 +91,6 @@ class FeedModuleViewController: UIViewController, FeedModuleViewInput, UIScrollV
     }
     
     // MARK: UX
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
-            output.didAskFetchMore()
-        } else {
-            
-        }
-    }
     
     @objc private func onPullRefresh() {
         output.didAskFetchAll()
@@ -219,5 +216,22 @@ extension FeedModuleViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         output.didTapItem(path: indexPath)
+    }
+}
+
+extension FeedModuleViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        output.didScrollFeed(scrollView)
+        
+        if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
+            output.didAskFetchMore()
+        } else {
+            
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        output.willScrollFeed(scrollView)
     }
 }

@@ -4,12 +4,13 @@
 //
 
 protocol FeedModuleViewInput: class {
-
+    
+    var feedView: CollectionView? { get }
+    
     func setupInitialState()
     
     func setLayout(type: FeedModuleLayoutType)
     func reload()
     func reload(with index: Int)
     func setRefreshing(state: Bool)
-    
 }

@@ -3,10 +3,8 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 //
 
-protocol FeedModuleInput: class {
+protocol FeedModuleOutput: class {    
+    func willScrollFeed(_ feedView: CollectionView?)
     
-    var feedView: CollectionView? { get }
-    
-    func setFeed(_ feed: FeedType)
-    func refreshData()
+    func didScrollFeed(_ feedView: CollectionView?)
 }

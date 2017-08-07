@@ -11,6 +11,8 @@ private let containerInset: CGFloat = 6.0
 private let filterHeight: CGFloat = 44.0
 private let contentWidth = UIScreen.main.bounds.width - containerInset * 2
 private let headerHeight = contentWidth / headerAspectRatio
+private let navBarHeight: CGFloat = 64.0
+private let feedHeight = UIScreen.main.bounds.height - filterHeight - navBarHeight
 
 class UserProfileViewController: UIViewController {
     
@@ -49,15 +51,16 @@ class UserProfileViewController: UIViewController {
         return summaryView
     }()
     
-    fileprivate lazy var filterView: SegmentedControlView = { [weak self] in
+    fileprivate lazy var filterView: SegmentedControlView = { [unowned self] in
         let filterView = SegmentedControlView.fromNib()
         filterView.setSegments([
-            SegmentedControlView.Segment(title: "Recent posts", action: { self?.output.onRecent() }),
-            SegmentedControlView.Segment(title: "Popular posts", action: { self?.output.onPopular() })
+            SegmentedControlView.Segment(title: "Recent posts", action: { self.output.onRecent() }),
+            SegmentedControlView.Segment(title: "Popular posts", action: { self.output.onPopular() })
             ])
         filterView.selectSegment(0)
         filterView.isSeparatorHidden = false
         filterView.separatorColor = Palette.extraLightGrey
+        
         return filterView
     }()
     
@@ -69,6 +72,10 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
         output.viewIsReady()
     }
+    
+    var feedScrollView: CollectionView?
+    var lastContentOffset: CGFloat = 0.0
+
 }
 
 extension UserProfileViewController: UserProfileViewInput {
@@ -83,7 +90,7 @@ extension UserProfileViewController: UserProfileViewInput {
     
     fileprivate func setupFeedModule() {
         let configurator = FeedModuleConfigurator()
-        configurator.configure(navigationController: self.navigationController!)
+        configurator.configure(navigationController: self.navigationController!, moduleOutput: self)
         
         feedModuleInput = configurator.moduleInput!
         
@@ -95,6 +102,9 @@ extension UserProfileViewController: UserProfileViewInput {
         
         feedView = feedViewController.view
         feedModuleInput.setFeed(.user(user: "3v9gnzwILTS", scope: .recent))
+        
+        feedScrollView = feedModuleInput.feedView
+        feedScrollView?.isTrackingTouches = false
         
         //        // Sample for input change
         //        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -154,7 +164,6 @@ extension UserProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "CellID")
-//        cell.textLabel?.text = "\(indexPath.row)"
         if feedView.superview == nil {
             cell.addSubview(feedView)
             feedView.snp.makeConstraints { make in
@@ -179,5 +188,58 @@ extension UserProfileViewController: UITableViewDelegate {
         let feedHeight = UIScreen.main.bounds.height - filterHeight
         let contentHeight = headerHeight + filterHeight + feedHeight + containerInset * 2 - navBarHeight
         return contentHeight
+    }
+}
+
+extension UserProfileViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView == containerTableView else {
+            return
+        }
+        
+        let isTableScrolledAtMax = containerTableView.contentOffset.y > headerHeight + containerInset * 2
+        
+        if isTableScrolledAtMax {
+            feedScrollView?.isTrackingTouches = true
+        }
+    }
+}
+
+extension UserProfileViewController: FeedModuleOutput {
+    func willScrollFeed(_ feedView: CollectionView?) {        
+//        if containerTableView.contentOffset.y < headerHeight + containerInset * 2 {
+//            feedScrollView?.isTrackingTouches = false
+//        } else {
+//            
+//        }
+    }
+    
+    func didScrollFeed(_ feedView: CollectionView?) {
+        let contentOffsetY = feedScrollView?.contentOffset.y ?? 0.0
+        let isScrollingUp = lastContentOffset > contentOffsetY
+        
+        if !isScrollingUp && containerTableView.contentOffset.y > headerHeight + containerInset * 2 {
+            feedScrollView?.isTrackingTouches = false
+        }
+        
+        lastContentOffset = contentOffsetY
+    }
+}
+
+class CollectionView: UICollectionView {
+    
+    var isTrackingTouches: Bool = true
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return isTrackingTouches ? super.point(inside: point, with: event) : false
+    }
+}
+
+class TableView: UITableView {
+    
+    var isTrackingTouches: Bool = true
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return isTrackingTouches ? super.point(inside: point, with: event) : false
     }
 }
