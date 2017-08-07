@@ -75,6 +75,8 @@ extension UserProfileViewController: UserProfileViewInput {
     func setupInitialState() {
         parent?.navigationItem.rightBarButtonItem = createPostButton
         view.backgroundColor = Palette.extraLightGrey
+        parent?.navigationController?.navigationBar.isTranslucent = false
+        automaticallyAdjustsScrollViewInsets = false
         containerTableView.tableHeaderView = embeddedIntoContainer(view: summaryView)
         setupFeedModule()
     }
