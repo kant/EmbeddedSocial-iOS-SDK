@@ -7,21 +7,13 @@ import Foundation
 import EmbeddedSocial
 
 class MyAppMenu: SideMenuItemsProvider {
-    
-//    static var nav: UINavigationController?
 
     func destination(forItem index: Int) -> UIViewController {
         let vc = UIViewController()
         
-        
-//        let nav = UINavigationController(rootViewController: vc)
-    
         vc.view = UIView()
         vc.view.backgroundColor = index == 0 ? UIColor.red : UIColor.yellow
         vc.title = "Title \(index)"
-        
-//        nav.pushViewController(blueVC, animated: false)
-        
         
         return vc
     }
