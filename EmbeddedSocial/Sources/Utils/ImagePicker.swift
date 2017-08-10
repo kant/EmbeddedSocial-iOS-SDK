@@ -20,7 +20,7 @@ class ImagePicker: NSObject {
     
     fileprivate var onImageSelected: ((Result<UIImage>) -> Void)?
     
-    fileprivate var imageWasSelected = false
+    var imageWasSelected = false
     
     func show(with options: Options) {
         presentingView = options.sourceViewController

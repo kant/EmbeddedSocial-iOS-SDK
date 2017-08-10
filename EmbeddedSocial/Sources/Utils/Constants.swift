@@ -31,6 +31,10 @@ extension Constants {
         static let contentWidth = UIScreen.main.bounds.width - containerInset * 2
         static let summaryHeight = contentWidth / summaryAspectRatio
     }
+    
+    struct ImageUpload {
+        static let type = "image/jpeg"
+    }
 }
 
 extension Constants {

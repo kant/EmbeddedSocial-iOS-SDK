@@ -19,6 +19,8 @@ class PostDetailViewController: BaseViewController, PostDetailViewInput {
     
     //constants
     fileprivate let reloadDelay = 0.2
+    fileprivate let commentViewHeight: CGFloat = 35
+    
     fileprivate var isNewDataLoading = false
 
     @IBOutlet weak var postButton: UIButton!
@@ -95,7 +97,7 @@ class PostDetailViewController: BaseViewController, PostDetailViewInput {
     
     func postCommentSuccess() {
         clearImage()
-        commentTextViewHeightConstraint.constant = 0
+        commentTextViewHeightConstraint.constant = commentViewHeight
         commentTextView.text = nil
         postButton.isHidden = true
         reload(animated: false)
@@ -110,6 +112,7 @@ class PostDetailViewController: BaseViewController, PostDetailViewInput {
     
     func clearImage() {
         self.photo = nil
+        imagePikcer.imageWasSelected = false
         mediaButton.setImage( UIImage(asset: .placeholderPostNoimage), for: .normal)
     }
     

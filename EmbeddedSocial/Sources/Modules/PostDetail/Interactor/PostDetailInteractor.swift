@@ -53,14 +53,17 @@ class PostDetailInteractor: PostDetailInteractorInput {
         let request = PostCommentRequest()
         request.text = comment
         
-        commentsService?.postComment(topicHandle: topicHandle, comment: request, resultHandler: { (response) in
+        commentsService?.postComment(topicHandle: topicHandle, request: request, photo: Photo(image: image), resultHandler: { (response) in
             let comment = Comment()
             comment.text = request.text
             comment.createdTime = Date()
             comment.firstName = SocialPlus.shared.sessionStore.user.firstName
             comment.lastName = SocialPlus.shared.sessionStore.user.lastName
             self.output.commentDidPosted(comment: comment)
+        }, failure: { (error) in
+            print("error posting comment")
         })
+        
     }
     
     private func sendCommentRequest(request: PostCommentRequest) {

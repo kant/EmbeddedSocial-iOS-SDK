@@ -7,7 +7,7 @@ import UIKit
 
 class PostDetailModuleConfigurator {
 
-    func configure(viewController: PostDetailViewController, post: Post) {
+    func configure(viewController: PostDetailViewController, post: Post, cache: Cache = SocialPlus.shared.cache) {
 
         let router = PostDetailRouter()
 
@@ -18,7 +18,7 @@ class PostDetailModuleConfigurator {
 
         let interactor = PostDetailInteractor()
         interactor.output = presenter
-        let commentsService = CommentsService()
+        let commentsService = CommentsService(cache: cache)
         interactor.commentsService = commentsService
         let likeService = LikesService()
         interactor.likeService = likeService

@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import Alamofire
 
 typealias CommentFetchResultHandler = ((CommentFetchResult) -> Void)
 typealias CommentPostResultHandler = ((PostCommentResponse) -> Void)
@@ -25,10 +26,18 @@ enum CommentsServiceError: Error {
 
 protocol CommentServiceProtocol {
     func fetchComments(topicHandle: String, cursor: String?, limit: Int32?, resultHandler: @escaping CommentFetchResultHandler)
-    func postComment(topicHandle: String, comment: PostCommentRequest, resultHandler: @escaping CommentPostResultHandler)
+    func postComment(topicHandle: String, request: PostCommentRequest, photo: Photo?, resultHandler: @escaping CommentPostResultHandler, failure: @escaping Failure)
 }
 
 class CommentsService: CommentServiceProtocol {
+    
+    private var cache: Cachable!
+    
+    // MARK: Public
+    init(cache: Cachable) {
+        self.cache = cache
+    }
+    
     func fetchComments(topicHandle: String, cursor: String? = nil, limit: Int32? = nil, resultHandler: @escaping CommentFetchResultHandler) {
         CommentsAPI.topicCommentsGetTopicComments(topicHandle: topicHandle, authorization: (SocialPlus.shared.sessionStore.user.credentials?.authHeader.values.first)!, cursor: cursor, limit: limit) { (response, error) in
             
@@ -53,9 +62,60 @@ class CommentsService: CommentServiceProtocol {
         }
     }
     
-    func postComment(topicHandle: String, comment: PostCommentRequest, resultHandler: @escaping CommentPostResultHandler) {
-        CommentsAPI.topicCommentsPostComment(topicHandle: topicHandle, request: comment, authorization: (SocialPlus.shared.sessionStore.user.credentials?.authHeader.values.first)!) { (resposne, error) in
-            resultHandler(resposne!)
+    
+    private var success: CommentPostResultHandler?
+    private var failure: Failure?
+    
+    func postComment(topicHandle: String, request: PostCommentRequest, photo: Photo?, resultHandler: @escaping CommentPostResultHandler, failure: @escaping Failure) {
+        self.success = resultHandler
+        self.failure = failure
+        
+        guard let network = NetworkReachabilityManager() else {
+            return
+        }
+        
+        if network.isReachable {
+            guard let image = photo?.image else {
+                sendPostCommentRequest(topicHandle: topicHandle, request: request)
+                return
+            }
+            
+            guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {
+                return
+            }
+            
+            ImagesAPI.imagesPostImage(imageType: ImagesAPI.ImageType_imagesPostImage.contentBlob, authorization: (SocialPlus.shared.sessionStore.user.credentials?.authHeader.values.first)!,
+                                      image: imageData, imageFileType: Constants.ImageUpload.type) { [weak self] (response, error) in
+                                        guard let blobHandle = response?.blobHandle else {
+                                            if let unwrappedError = error {
+                                                failure(unwrappedError)
+                                            }
+                                            return
+                                        }
+                                        
+                                        request.blobType = .image
+                                        request.blobHandle = blobHandle
+                                        self?.sendPostCommentRequest(topicHandle: topicHandle, request: request)
+            }
+            
+        } else {
+            if photo != nil {
+                cache?.cacheOutgoing(object: photo!)
+                request.blobHandle = photo?.url
+            }
+            
+            cache?.cacheOutgoing(object: request)
+        }
+    }
+    
+    private func sendPostCommentRequest(topicHandle: String, request: PostCommentRequest) {
+        CommentsAPI.topicCommentsPostComment(topicHandle: topicHandle, request: request, authorization: (SocialPlus.shared.sessionStore.user.credentials?.authHeader.values.first)!) { (response, error) in
+            guard response != nil else {
+                self.failure!(error!)
+                return
+            }
+            
+            self.success!(response!)
         }
     }
     
