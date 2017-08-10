@@ -75,8 +75,8 @@ class PostDetailPresenter: PostDetailModuleInput, PostDetailViewOutput, PostDeta
         interactor.fetchMoreComments(topicHandle: (post?.topicHandle)!)
     }
     
-    func commentForPath(path: IndexPath) -> Comment {
-        return comments[path.row]
+    func comment(index: Int) -> Comment {
+        return comments[index]
     }
     
     func postComment(image: UIImage?, comment: String) {

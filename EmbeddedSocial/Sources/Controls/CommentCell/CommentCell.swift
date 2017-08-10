@@ -7,10 +7,11 @@
 import UIKit
 
 protocol CommentCellDelegate: class {
-    func like(cell: CommentCell)
+    func like(index: Int)
     func toReplies()
     func mediaLoaded()
     func photoPressed(image: UIImage, in cell: CommentCell)
+    func commentOptionsPressed(index: Int)
 }
 
 class CommentCell: UITableViewCell {
@@ -27,6 +28,8 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var postedTimeLabel: UILabel!
     
     var delegate: CommentCellDelegate?
+    
+    private var formatter = DateFormatterTool()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,6 +63,8 @@ class CommentCell: UITableViewCell {
         } else {
             mediaButtonHeightConstraint.constant = 0
         }
+        
+        postedTimeLabel.text = comment.createdTime.map{ formatter.shortStyle.string(from: $0, to: Date()) }!
         likeButton.isSelected = comment.liked
         selectionStyle = .none
         contentView.layoutIfNeeded()
@@ -67,10 +72,12 @@ class CommentCell: UITableViewCell {
         // TODO: full fit
         
     }
+    @IBAction func commentOptionsPressed(_ sender: Any) {
+    }
     
     @IBAction func likePressed(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.like(cell: self)
+        delegate?.like(index: tag)
     }
 
     @IBAction func commentPressed(_ sender: Any) {

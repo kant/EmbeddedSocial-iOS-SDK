@@ -95,10 +95,12 @@ class PostDetailViewController: BaseViewController, PostDetailViewInput {
     
     func postCommentSuccess() {
         clearImage()
+        commentTextViewHeightConstraint.constant = 0
         commentTextView.text = nil
         postButton.isHidden = true
         reload(animated: false)
         SVProgressHUD.dismiss()
+        view.layoutIfNeeded()
     }
     
     func postCommentFailed(error: Error) {
@@ -142,7 +144,7 @@ extension PostDetailViewController: UITableViewDataSource {
             return cell
         case TableSections.comments.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifier, for: indexPath) as! CommentCell
-            cell.config(comment: output.commentForPath(path: indexPath))
+            cell.config(comment: output.comment(index: indexPath.row))
             cell.delegate = self
             if  output.numberOfItems() > indexPath.row + 1 && isNewDataLoading == false {
                 isNewDataLoading = true
@@ -186,15 +188,16 @@ extension PostDetailViewController: UITableViewDelegate {
 }
 
 extension PostDetailViewController: CommentCellDelegate {
-    func like(cell: CommentCell) {
-        let comment = output.commentForPath(path: tableView.indexPath(for: cell)!)
+    
+    func like(index: Int) {
+        let comment = output.comment(index: index)
         if comment.liked {
             output.unlikeComment(comment: comment)
         } else {
             output.likeComment(comment: comment)
         }
     }
-    
+
     func toReplies() {
         
     }
@@ -207,6 +210,9 @@ extension PostDetailViewController: CommentCellDelegate {
         let browser = SKPhotoBrowser(originImage: image, photos: [SKPhoto.photoWithImage(image)], animatedFromView: cell)
         browser.initializePageIndex(0)
         present(browser, animated: true, completion: {})
+    }
+    
+    func commentOptionsPressed(index: Int) {
     }
 }
 

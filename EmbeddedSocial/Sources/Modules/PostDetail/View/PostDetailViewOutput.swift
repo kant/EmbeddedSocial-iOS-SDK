@@ -13,7 +13,7 @@ protocol PostDetailViewOutput {
     func viewIsReady()
     func numberOfItems() -> Int
     var post: Post? {get set}
-    func commentForPath(path: IndexPath) -> Comment
+    func comment(index: Int) -> Comment
     func postComment(image: UIImage?, comment: String)
     func likeComment(comment: Comment)
     func unlikeComment(comment: Comment)

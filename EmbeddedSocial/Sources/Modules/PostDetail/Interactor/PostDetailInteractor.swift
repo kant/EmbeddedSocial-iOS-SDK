@@ -52,13 +52,19 @@ class PostDetailInteractor: PostDetailInteractorInput {
     func postComment(image: UIImage?, topicHandle: String, comment: String) {
         let request = PostCommentRequest()
         request.text = comment
+        
         commentsService?.postComment(topicHandle: topicHandle, comment: request, resultHandler: { (response) in
             let comment = Comment()
             comment.text = request.text
+            comment.createdTime = Date()
             comment.firstName = SocialPlus.shared.sessionStore.user.firstName
             comment.lastName = SocialPlus.shared.sessionStore.user.lastName
             self.output.commentDidPosted(comment: comment)
         })
+    }
+    
+    private func sendCommentRequest(request: PostCommentRequest) {
+        
     }
     
     func likeComment(comment: Comment) {

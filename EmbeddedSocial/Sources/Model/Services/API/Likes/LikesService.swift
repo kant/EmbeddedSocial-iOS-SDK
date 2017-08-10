@@ -35,13 +35,13 @@ class LikesService: LikesServiceProtocol {
     }
     
     func likeComment(commentHandle: String, completion: @escaping CommentCompletionHandler) {
-        LikesAPI.commentLikesPostLike(commentHandle: commentHandle) { (object, error) in
+        LikesAPI.commentLikesPostLike(commentHandle: commentHandle, authorization: (SocialPlus.shared.sessionStore.user.credentials?.authHeader.values.first)!) { (object, error) in
             completion(commentHandle, error)
         }
     }
     
     func unlikeComment(commentHandle: String, completion: @escaping CommentCompletionHandler) {
-        LikesAPI.commentLikesDeleteLike(commentHandle: commentHandle) { (object, error) in
+        LikesAPI.commentLikesDeleteLike(commentHandle: commentHandle, authorization: (SocialPlus.shared.sessionStore.user.credentials?.authHeader.values.first)!) { (object, error) in
             completion(commentHandle, error)
         }
     }
