@@ -111,7 +111,7 @@ class PostDetailViewController: BaseViewController, PostDetailViewInput {
     }
     
     func clearImage() {
-        self.photo = nil
+        photo = nil
         imagePikcer.imageWasSelected = false
         mediaButton.setImage( UIImage(asset: .placeholderPostNoimage), for: .normal)
     }
@@ -133,7 +133,7 @@ class PostDetailViewController: BaseViewController, PostDetailViewInput {
         commentTextView.resignFirstResponder()
         SVProgressHUD.show()
         postButton.isHidden = true
-        output.postComment(image: mediaButton.imageView?.image, comment: commentTextView.text)
+        output.postComment(photo: photo, comment: commentTextView.text)
     }
 }
 
@@ -147,6 +147,7 @@ extension PostDetailViewController: UITableViewDataSource {
             return cell
         case TableSections.comments.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifier, for: indexPath) as! CommentCell
+            cell.tag = indexPath.row
             cell.config(comment: output.comment(index: indexPath.row))
             cell.delegate = self
             if  output.numberOfItems() > indexPath.row + 1 && isNewDataLoading == false {

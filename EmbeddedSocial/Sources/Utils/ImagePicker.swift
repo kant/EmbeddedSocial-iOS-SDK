@@ -97,7 +97,7 @@ extension ImagePicker: UIImagePickerControllerDelegate, UINavigationControllerDe
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            let photo = Photo(uid: UUID().uuidString, url: info[UIImagePickerControllerMediaURL] as? String, image: image)
+            let photo = Photo(uid: UUID().uuidString, url: String(describing: info[UIImagePickerControllerReferenceURL]!) , image: image)
             imageWasSelected = true
             delegate?.selected(photo: photo)
             onImageSelected?(.success(image))

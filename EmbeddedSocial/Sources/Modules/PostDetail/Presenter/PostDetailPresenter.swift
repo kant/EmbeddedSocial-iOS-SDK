@@ -79,7 +79,7 @@ class PostDetailPresenter: PostDetailModuleInput, PostDetailViewOutput, PostDeta
         return comments[index]
     }
     
-    func postComment(image: UIImage?, comment: String) {
-        interactor.postComment(image: image, topicHandle: (post?.topicHandle)!, comment: comment)
+    func postComment(photo: Photo?, comment: String) {
+        interactor.postComment(photo: photo, topicHandle: (post?.topicHandle)!, comment: comment)
     }
 }
