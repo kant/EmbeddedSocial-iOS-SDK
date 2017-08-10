@@ -5,5 +5,6 @@
 
 import Foundation
 
-
-public typealias Object = Any
+struct TestConfig {
+    public static let fullUserName = "John Doe"
+}
