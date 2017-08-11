@@ -67,10 +67,6 @@ class PostDetailInteractor: PostDetailInteractorInput {
         
     }
     
-    private func sendCommentRequest(request: PostCommentRequest) {
-        
-    }
-    
     func likeComment(comment: Comment) {
         likeService?.likeComment(commentHandle: comment.commentHandle!, completion: { (commentHandle, error) in
             if error != nil {
@@ -91,7 +87,7 @@ class PostDetailInteractor: PostDetailInteractorInput {
             
             comment.liked = false
             comment.totalLikes -= 1
-            self.output.commendUnliked(comment: comment)
+            self.output.commentUnliked(comment: comment)
         })
     }
 }

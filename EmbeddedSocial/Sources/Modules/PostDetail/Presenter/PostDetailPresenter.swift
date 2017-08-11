@@ -13,19 +13,6 @@ class PostDetailPresenter: PostDetailModuleInput, PostDetailViewOutput, PostDeta
 
     var comments = [Comment]()
     
-    func viewIsReady() {
-        view.setupInitialState()
-        interactor.fetchComments(topicHandle: (post?.topicHandle)!)
-    }
-    
-    func likeComment(comment: Comment) {
-        interactor.likeComment(comment: comment)
-    }
-    
-    func unlikeComment(comment: Comment) {
-        interactor.unlikeComment(comment: comment)
-    }
-    
     // MARK: PostDetailInteractorOutput
     func didFetch(comments: [Comment]) {
         self.comments = comments
@@ -58,7 +45,7 @@ class PostDetailPresenter: PostDetailModuleInput, PostDetailViewOutput, PostDeta
         view.refreshCell(index: index)
     }
     
-    func commendUnliked(comment: Comment) {
+    func commentUnliked(comment: Comment) {
         guard let index = comments.index(of: comment) else {
             return
         }
@@ -67,6 +54,20 @@ class PostDetailPresenter: PostDetailModuleInput, PostDetailViewOutput, PostDeta
     }
     
     // MAKR: PostDetailViewOutput
+    
+    func viewIsReady() {
+        view.setupInitialState()
+        interactor.fetchComments(topicHandle: (post?.topicHandle)!)
+    }
+    
+    func likeComment(comment: Comment) {
+        interactor.likeComment(comment: comment)
+    }
+    
+    func unlikeComment(comment: Comment) {
+        interactor.unlikeComment(comment: comment)
+    }
+    
     func numberOfItems() -> Int {
         return comments.count
     }

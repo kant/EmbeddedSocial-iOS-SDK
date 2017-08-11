@@ -11,6 +11,13 @@
 		3234AD1B1F2E70C3009C3327 /* PostCellCompact.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3234AD1A1F2E70C3009C3327 /* PostCellCompact.xib */; };
 		32FAB0511F2E6D3000C5B18D /* PostCellCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB0501F2E6D3000C5B18D /* PostCellCompact.swift */; };
 		32FAB0531F2E6D4700C5B18D /* PostCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB0521F2E6D4700C5B18D /* PostCellProtocol.swift */; };
+		634629E51F3D8B9500299F1A /* CreatePostPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634629E41F3D8B9500299F1A /* CreatePostPresenterTests.swift */; };
+		634629EF1F3D914900299F1A /* MockPostDetaillnteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634629EA1F3D914900299F1A /* MockPostDetaillnteractor.swift */; };
+		634629F01F3D914900299F1A /* MockPostDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634629EB1F3D914900299F1A /* MockPostDetailPresenter.swift */; };
+		634629F11F3D914900299F1A /* MockPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634629EC1F3D914900299F1A /* MockPostDetailViewController.swift */; };
+		634629F21F3D914900299F1A /* PostDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634629ED1F3D914900299F1A /* PostDetailInteractorTests.swift */; };
+		634629F31F3D914900299F1A /* PostDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634629EE1F3D914900299F1A /* PostDetailPresenterTests.swift */; };
+		634629F51F3DB4E200299F1A /* MockCommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634629F41F3DB4E200299F1A /* MockCommentService.swift */; };
 		6360D8BE1F3B15EB00FECAEB /* AlamofireImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6360D8761F3B15EB00FECAEB /* AlamofireImplementations.swift */; };
 		6360D8BF1F3B15EB00FECAEB /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6360D8771F3B15EB00FECAEB /* APIHelper.swift */; };
 		6360D8C01F3B15EB00FECAEB /* BlobsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6360D8791F3B15EB00FECAEB /* BlobsAPI.swift */; };
@@ -87,7 +94,6 @@
 		63A1D71B1F29FBB80090C67A /* CacheTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D7191F29FBAE0090C67A /* CacheTest.swift */; };
 		63A1D71D1F29FC120090C67A /* MockTransactionsDatabaseFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D71C1F29FC120090C67A /* MockTransactionsDatabaseFacade.swift */; };
 		63A1D7221F2A03150090C67A /* MockCreatePostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D7211F2A03150090C67A /* MockCreatePostInteractor.swift */; };
-		63A1D7231F2A04730090C67A /* CreatePostPresentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889AFC0B1F220BCD003AAF19 /* CreatePostPresentorTests.swift */; };
 		63A1D7251F2A04EB0090C67A /* MockCreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D7241F2A04EB0090C67A /* MockCreatePostViewController.swift */; };
 		63A1D7261F2A23F30090C67A /* CreatePostInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889AFC091F220BCD003AAF19 /* CreatePostInteractorTests.swift */; };
 		63A1D7281F2A24900090C67A /* MockCreatePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1D7271F2A24900090C67A /* MockCreatePostPresenter.swift */; };
@@ -536,6 +542,13 @@
 		3234AD1A1F2E70C3009C3327 /* PostCellCompact.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCellCompact.xib; sourceTree = "<group>"; };
 		32FAB0501F2E6D3000C5B18D /* PostCellCompact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellCompact.swift; sourceTree = "<group>"; };
 		32FAB0521F2E6D4700C5B18D /* PostCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellProtocol.swift; sourceTree = "<group>"; };
+		634629E41F3D8B9500299F1A /* CreatePostPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresenterTests.swift; sourceTree = "<group>"; };
+		634629EA1F3D914900299F1A /* MockPostDetaillnteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPostDetaillnteractor.swift; sourceTree = "<group>"; };
+		634629EB1F3D914900299F1A /* MockPostDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPostDetailPresenter.swift; sourceTree = "<group>"; };
+		634629EC1F3D914900299F1A /* MockPostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPostDetailViewController.swift; sourceTree = "<group>"; };
+		634629ED1F3D914900299F1A /* PostDetailInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailInteractorTests.swift; sourceTree = "<group>"; };
+		634629EE1F3D914900299F1A /* PostDetailPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailPresenterTests.swift; sourceTree = "<group>"; };
+		634629F41F3DB4E200299F1A /* MockCommentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCommentService.swift; sourceTree = "<group>"; };
 		6360D8761F3B15EB00FECAEB /* AlamofireImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireImplementations.swift; sourceTree = "<group>"; };
 		6360D8771F3B15EB00FECAEB /* APIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		6360D8791F3B15EB00FECAEB /* BlobsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobsAPI.swift; sourceTree = "<group>"; };
@@ -839,7 +852,6 @@
 		889AFC041F220BCD003AAF19 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		889AFC061F220BCD003AAF19 /* UIImage+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		889AFC091F220BCD003AAF19 /* CreatePostInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostInteractorTests.swift; sourceTree = "<group>"; };
-		889AFC0B1F220BCD003AAF19 /* CreatePostPresentorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostPresentorTests.swift; sourceTree = "<group>"; };
 		889AFC0D1F220BCD003AAF19 /* SideMenuInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuInteractorTests.swift; sourceTree = "<group>"; };
 		889AFC0E1F220BCD003AAF19 /* SideMenuPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuPresenterTests.swift; sourceTree = "<group>"; };
 		889AFC101F220BCD003AAF19 /* AuthAPIProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPIProviderTests.swift; sourceTree = "<group>"; };
@@ -1078,6 +1090,27 @@
 				886B3ACD1F13ABEA00BF1A8E /* SVProgressHUD.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		634629E81F3D914900299F1A /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				634629E91F3D914900299F1A /* Mocks */,
+				634629ED1F3D914900299F1A /* PostDetailInteractorTests.swift */,
+				634629EE1F3D914900299F1A /* PostDetailPresenterTests.swift */,
+			);
+			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		634629E91F3D914900299F1A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				634629EA1F3D914900299F1A /* MockPostDetaillnteractor.swift */,
+				634629EB1F3D914900299F1A /* MockPostDetailPresenter.swift */,
+				634629EC1F3D914900299F1A /* MockPostDetailViewController.swift */,
+				634629F41F3DB4E200299F1A /* MockCommentService.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		6360D8741F3B15EB00FECAEB /* Classes */ = {
@@ -1545,7 +1578,6 @@
 			isa = PBXGroup;
 			children = (
 				93620CF91F339EC300B9C794 /* PostDetail */,
-				9CC531361F31CCF2004CE94F /* FeedModule */,
 				88580B2E1F2213AB00C1CBAF /* CreateAccount */,
 				88580B451F2213AB00C1CBAF /* CreatePost */,
 				9CC531361F31CCF2004CE94F /* FeedModule */,
@@ -2057,6 +2089,7 @@
 		889AFC071F220BCD003AAF19 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				634629E81F3D914900299F1A /* PostDetail */,
 				88F7A7991F27976E005FEC5F /* CreateAccount */,
 				889AFC081F220BCD003AAF19 /* CreatePost */,
 				9CC531331F31CCD1004CE94F /* FeedModule */,
@@ -2075,7 +2108,7 @@
 			children = (
 				63A1D7201F2A020F0090C67A /* Mock */,
 				889AFC091F220BCD003AAF19 /* CreatePostInteractorTests.swift */,
-				889AFC0B1F220BCD003AAF19 /* CreatePostPresentorTests.swift */,
+				634629E41F3D8B9500299F1A /* CreatePostPresenterTests.swift */,
 			);
 			path = CreatePost;
 			sourceTree = "<group>";
@@ -3381,6 +3414,7 @@
 				9C8F68981F34AA8200AF4A7F /* FeedModuleInteractor-Pagination-Tests.swift in Sources */,
 				881F7E5E1F2637B7003EB37A /* KeyValueRepositoryTests.swift in Sources */,
 				88F7A7A11F287D51005FEC5F /* MockCreateAccountInteractor.swift in Sources */,
+				634629F21F3D914900299F1A /* PostDetailInteractorTests.swift in Sources */,
 				88F1637D1F264B0F00DAAF68 /* SessionStoreTests.swift in Sources */,
 				889AFC291F220BCD003AAF19 /* MockAuthAPI.swift in Sources */,
 				889AFC201F220BCD003AAF19 /* UIImage+Ext.swift in Sources */,
@@ -3395,7 +3429,7 @@
 				883B9B641F2776E600D1E66E /* Item.swift in Sources */,
 				889AFC1E1F220BCD003AAF19 /* PhotoTests.swift in Sources */,
 				88F7A7A31F287D91005FEC5F /* MockCreateAccountRouter.swift in Sources */,
-				63A1D7231F2A04730090C67A /* CreatePostPresentorTests.swift in Sources */,
+				634629F31F3D914900299F1A /* PostDetailPresenterTests.swift in Sources */,
 				881F7E601F2637F7003EB37A /* MementoSerializableItem.swift in Sources */,
 				63A1D7261F2A23F30090C67A /* CreatePostInteractorTests.swift in Sources */,
 				88F191741F26164200B93ADF /* AuthProviderTests.swift in Sources */,
@@ -3415,6 +3449,8 @@
 				88FFFA5A1F2F7F780066A1A0 /* UserProfileInteractorTests.swift in Sources */,
 				88F551BA1F39BB9700F4AAB9 /* MockFeedModuleInput.swift in Sources */,
 				88F1637B1F26494100DAAF68 /* SocialUserTests.swift in Sources */,
+				634629F11F3D914900299F1A /* MockPostDetailViewController.swift in Sources */,
+				634629E51F3D8B9500299F1A /* CreatePostPresenterTests.swift in Sources */,
 				88F551BC1F39D2B300F4AAB9 /* UserProfilePresenterTests.swift in Sources */,
 				889AFC1D1F220BCD003AAF19 /* CredentialsListTests.swift in Sources */,
 				88F163791F2648D000DAAF68 /* SessionStoreDatabaseFacadeTests.swift in Sources */,
@@ -3437,10 +3473,13 @@
 				88087B4A1F2B4DD100A33E9A /* MockThirdPartyConfigurator.swift in Sources */,
 				88F5518F1F3366A100F4AAB9 /* UserListInteractorTests.swift in Sources */,
 				88F7A7891F27896B005FEC5F /* MockAuthService.swift in Sources */,
+				634629EF1F3D914900299F1A /* MockPostDetaillnteractor.swift in Sources */,
 				88F551951F336DCB00F4AAB9 /* MockUserListInteractor.swift in Sources */,
+				634629F51F3DB4E200299F1A /* MockCommentService.swift in Sources */,
 				88FFFA5F1F2F81A70066A1A0 /* FollowStatusTests.swift in Sources */,
 				88F551CE1F39E9D400F4AAB9 /* FollowersPresenterTests.swift in Sources */,
 				881F7E621F263888003EB37A /* MockKeyValueStorage.swift in Sources */,
+				634629F01F3D914900299F1A /* MockPostDetailPresenter.swift in Sources */,
 				9C8F68971F34AA4D00AF4A7F /* FeedModuleInteractor-FetchQuery-Tests.swift in Sources */,
 				88F551931F336D9200F4AAB9 /* UserListPresenterTests.swift in Sources */,
 				88F7A7861F2788DE005FEC5F /* LoginInteractorTests.swift in Sources */,

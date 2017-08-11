@@ -12,5 +12,5 @@ protocol PostDetailInteractorOutput: class {
     func commentDidPosted(comment: Comment)
     func commentPostFailed(error: Error)
     func commentLiked(comment: Comment)
-    func commendUnliked(comment: Comment)
+    func commentUnliked(comment: Comment)
 }
