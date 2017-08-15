@@ -11,7 +11,7 @@ final class TwitterServerBasedAPI: AuthAPI {
     
     private let sessionService = SessionService()
     
-    fileprivate let authenticator = OAuth1Authorizer(
+    fileprivate let authenticator = OAuth1Swift(
         consumerKey: ThirdPartyConfigurator.Keys.twitterConsumerKey,
         consumerSecret: ThirdPartyConfigurator.Keys.twitterConsumerSecret,
         requestTokenUrl: "https://api.twitter.com/oauth/request_token",
@@ -123,17 +123,5 @@ extension TwitterServerBasedAPI: OAuthWebViewControllerDelegate {
     
     func oauthWebViewControllerDidDisappear() {
         authenticator.cancel()
-    }
-}
-
-class OAuth1Authorizer: OAuth1Swift {
-    
-    override func postOAuthRequestToken(callbackURL: URL, success: @escaping TokenSuccessHandler, failure: FailureHandler?) {
-        if !client.credential.oauthToken.isEmpty {
-            success(client.credential, nil, [:])
-            return
-        }
-        
-        super.postOAuthRequestToken(callbackURL: callbackURL, success: success, failure: failure)
     }
 }

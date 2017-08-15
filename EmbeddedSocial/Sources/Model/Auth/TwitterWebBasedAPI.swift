@@ -9,9 +9,7 @@ import SafariServices
 
 final class TwitterWebBasedAPI: AuthAPI {
     
-    private let sessionService = SessionService()
-    
-    fileprivate let authenticator = OAuth1Authorizer(
+    fileprivate let authenticator = OAuth1Swift(
         consumerKey: ThirdPartyConfigurator.Keys.twitterConsumerKey,
         consumerSecret: ThirdPartyConfigurator.Keys.twitterConsumerSecret,
         requestTokenUrl: "https://api.twitter.com/oauth/request_token",
@@ -21,7 +19,7 @@ final class TwitterWebBasedAPI: AuthAPI {
     
     private lazy var internalWebViewController: WebViewController = {
         let controller = WebViewController()
-        controller.view = UIView(frame: UIScreen.main.bounds)
+        controller.view = UIView(frame: UIScreen.main.bounds) // needed if no nib or not loaded from storyboard
         controller.delegate = self
         controller.urlScheme = "twitterkit-\(ThirdPartyConfigurator.Keys.twitterConsumerKey)"
         controller.viewDidLoad()
@@ -31,19 +29,8 @@ final class TwitterWebBasedAPI: AuthAPI {
     fileprivate var request: OAuthSwiftRequestHandle?
     
     func login(from viewController: UIViewController?, handler: @escaping (Result<SocialUser>) -> Void) {
-        authenticator.authorizeURLHandler = urlHandler(withType: .embedded, sourceViewController: viewController)
-
-        sessionService.requestToken(authProvider: .twitter) { [unowned self] result in
-            guard let token = result.value else {
-                handler(.failure(APIError(error: result.error as? ErrorResponse)))
-                return
-            }
-            
-            self.authorize(requestToken: token, handler: handler)
-        }
-    }
-    
-    private func authorize(requestToken: String, handler: @escaping (Result<SocialUser>) -> Void) {
+        authenticator.authorizeURLHandler = urlHandler(withType: .safari, sourceViewController: viewController)
+        
         authenticator.authorize(
             withCallbackURL: URL(string: "\(Constants.oauth1URLScheme)://oauth-callback/twitter")!,
             success: { [weak self] credential, _, parameters in
@@ -52,7 +39,7 @@ final class TwitterWebBasedAPI: AuthAPI {
                     return
                 }
                 self?.loadSocialUser(userID: userID,
-                                     requestToken: requestToken,
+                                     requestToken: credential.oauthToken,
                                      accessToken: credential.oauthVerifier,
                                      completion: handler)
             },
@@ -92,10 +79,10 @@ final class TwitterWebBasedAPI: AuthAPI {
             completion(.failure(error))
         })
     }
-
+    
     private func urlHandler(withType type: URLHandlerType, sourceViewController: UIViewController?) -> OAuthSwiftURLHandlerType {
         switch type {
-        case .external:
+        case .external :
             return OAuthSwiftOpenURLExternally.sharedInstance
         case .embedded:
             if internalWebViewController.parent == nil {
