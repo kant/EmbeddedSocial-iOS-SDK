@@ -6,7 +6,35 @@
 import XCTest
 @testable import EmbeddedSocial
 
+private class FeedModulePresenterMock: FeedModuleInteractorOutput {
+    
+    
+    var fetched:
+    
+    var didPostAction: (post: PostHandle, action: PostSocialAction, error: Error?)?
+    
+    func didFetch(feed: PostsFeed) {
+        
+    }
+    
+    func didFetchMore(feed: PostsFeed) {
+        
+    }
+    
+    func didFail(error: FeedServiceError) { }
+    
+    func didStartFetching() { }
+    
+    func didFinishFetching() { }
+    
+    func didPostAction(post: PostHandle, action: PostSocialAction, error: Error?) {
+        didPostAction = (post, action, error)
+    }
+}
+
 private class MockPostService: PostServiceProtocol {
+    
+    var fetchResult: PostFetchResult?
     
     var fetchPopularIsCalled = false
     var fetchPopularQuery: PopularFeedQuery?
@@ -175,6 +203,26 @@ class FeedModuleInteractor_FetchQuery_Tests: XCTestCase {
         XCTAssertTrue(postService.fetchPopularForUserQuery?.user == "user")
         XCTAssertTrue(postService.fetchPopularForUserQuery?.cursor == "cursor")
     }
+    
+    
+    
+    func testThat() {
+        
+        // given
+        let feedType = FeedType.user(user: "user", scope: .popular)
+        
+        // when
+        sut.fetchPosts(limit: 20, cursor: "cursor", feedType: feedType)
+        
+        // then
+        XCTAssertTrue(postService.fetchPopularForUserIsCalled)
+        presenter.
+        
+        
+        
+        
+    }
+    
     
     
 }
