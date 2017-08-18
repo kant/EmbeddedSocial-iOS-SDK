@@ -36,16 +36,19 @@ class SideMenuPresenterTest: QuickSpec {
         describe("when module is initialized with dual") {
             
             beforeEach {
-                self.presenter.configuration = .dual
+                self.presenter.configuration = .tab
                 self.presenter.viewIsReady()
             }
-            
-            
+        
             it("dual mode should have tab bar") {
                 expect(self.view.didShowTabBar).to(beTruthy())
             }
             
             context("when we are on social") {
+                
+                beforeEach {
+                    self.presenter.didSwitch(to: 1)
+                }
                 
                 it("should show social tab by default with account info") {
                     expect(self.view.didShowAccountInfo).to(beTruthy())
@@ -58,7 +61,9 @@ class SideMenuPresenterTest: QuickSpec {
             
             context("when we are on client tab") {
                 
-                presenter.didSwitch(to: 0)
+                beforeEach {
+                    self.presenter.didSwitch(to: 0)
+                }
                 
                 it("should switch tab") {
                     expect(self.presenter.tab).to(equal(SideMenuPresenter.SideMenuTabs.client))
@@ -76,8 +81,10 @@ class SideMenuPresenterTest: QuickSpec {
         
         describe("when module is initialized with single") {
             
-            self.presenter.configuration = .single
-            self.presenter.viewIsReady()
+            beforeEach {
+                self.presenter.configuration = .single
+                self.presenter.viewIsReady()
+            }
             
             it("should build ") {
                 
@@ -146,6 +153,10 @@ class MockViewController: SideMenuViewInput {
     
     var isTabBarVisible = false
     var isAccountInfoVisible = false
+    
+    func selectBar(with index: Int) {
+        
+    }
     
     func showTabBar(visible: Bool) {
         isTabBarVisible = visible
