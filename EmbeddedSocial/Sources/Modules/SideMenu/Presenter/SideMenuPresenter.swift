@@ -72,7 +72,7 @@ class SideMenuPresenter: SideMenuModuleInput, SideMenuViewOutput, SideMenuIntera
     }
     
     // Current Tab
-    private var tab: SideMenuTabs = .none {
+    private(set) var tab: SideMenuTabs = .none {
         didSet {
             buildItems()
             view.reload()

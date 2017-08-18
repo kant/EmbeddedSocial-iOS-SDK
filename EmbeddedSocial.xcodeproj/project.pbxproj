@@ -534,6 +534,7 @@
 		9C813A4A1F45A21900462950 /* FeedModuleInteractor-FetchQuery-Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC531341F31CCD1004CE94F /* FeedModuleInteractor-FetchQuery-Tests.swift */; };
 		9C8F68961F3485CA00AF4A7F /* topics&limit20.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD760FE1F33158200ABBB2A /* topics&limit20.json */; };
 		9CA8646F1F46C98C00199E29 /* SocialMenuItemsProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA8646E1F46C98C00199E29 /* SocialMenuItemsProviderTests.swift */; };
+		9CA864701F46FB0800199E29 /* SideMenuPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889AFC0E1F220BCD003AAF19 /* SideMenuPresenterTests.swift */; };
 		9CB3F1FB1F3367F00099A22D /* TopicServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB3F1FA1F3367F00099A22D /* TopicServiceTests.swift */; };
 		9CB3F1FE1F336B780099A22D /* MyFollowersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F385801F30CF9A0048B04C /* MyFollowersAPI.swift */; };
 		9CBA39ED1F1F7E88007EB52C /* EmbeddedSocial-Example-MenuHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA39EC1F1F7E88007EB52C /* EmbeddedSocial-Example-MenuHandler.swift */; };
@@ -4130,6 +4131,7 @@
 				88F1638B1F27658B00DAAF68 /* IncomingTransactionTests.swift in Sources */,
 				889AFC2E1F220BCD003AAF19 /* SocialPlusTests.swift in Sources */,
 				88FFFA581F2F7F780066A1A0 /* MockUserProfileRouter.swift in Sources */,
+				9CA864701F46FB0800199E29 /* SideMenuPresenterTests.swift in Sources */,
 				63A1D7251F2A04EB0090C67A /* MockCreatePostViewController.swift in Sources */,
 				883B9B601F276BCF00D1E66E /* TestModel.xcdatamodeld in Sources */,
 				88F7A78D1F278AA4005FEC5F /* MockSessionService.swift in Sources */,

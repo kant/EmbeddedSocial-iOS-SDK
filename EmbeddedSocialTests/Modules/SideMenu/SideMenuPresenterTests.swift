@@ -20,7 +20,6 @@ class SideMenuPresenterTest: QuickSpec {
     override func spec() {
         
         beforeSuite {
-       
             
             self.router = MockRouter()
             self.interactor = MockInteractor()
@@ -37,7 +36,7 @@ class SideMenuPresenterTest: QuickSpec {
         describe("when module is initialized with dual") {
             
             beforeEach {
-                self.presenter.configation = .dual
+                self.presenter.configuration = .dual
                 self.presenter.viewIsReady()
             }
             
@@ -62,7 +61,7 @@ class SideMenuPresenterTest: QuickSpec {
                 presenter.didSwitch(to: 0)
                 
                 it("should switch tab") {
-                    expect(self.presenter.tab).to(equal(.client))
+                    expect(self.presenter.tab).to(equal(SideMenuPresenter.SideMenuTabs.client))
                 }
                 
                 it("should have single section") {
@@ -73,13 +72,11 @@ class SideMenuPresenterTest: QuickSpec {
                     expect(self.view.isAccountInfoVisible).to(beFalsy())
                 }
             }
-            
-            
         }
         
         describe("when module is initialized with single") {
             
-            self.presenter.configation = .single
+            self.presenter.configuration = .single
             self.presenter.viewIsReady()
             
             it("should build ") {
@@ -92,12 +89,12 @@ class SideMenuPresenterTest: QuickSpec {
 
 class MockInteractor: SideMenuInteractorInput {
     
-    func socialMenuItems() -> [MenuItemModel] {
-        return [MenuItemModel(title: "social item 1", image: UIImage())]
+    func socialMenuItems() -> [SideMenuItemModel] {
+        return [SideMenuItemModel(title: "social item 1", image: UIImage())]
     }
     
-    func clientMenuItems() -> [MenuItemModel] {
-        return [MenuItemModel(title: "client item 1", image: UIImage())]
+    func clientMenuItems() -> [SideMenuItemModel] {
+        return [SideMenuItemModel(title: "client item 1", image: UIImage())]
     }
     
     func targetForSocialMenuItem(with index: Int) -> UIViewController {
@@ -111,12 +108,22 @@ class MockInteractor: SideMenuInteractorInput {
 
 class MockRouter: SideMenuRouterInput {
     
-    var didOpen = false
     var openedController: UIViewController?
     
-    func open(viewController: UIViewController) {
+    func open(_ viewController: UIViewController) {
         openedController = viewController
-        didOpen = true
+    }
+    
+    func close() {
+        
+    }
+    
+    func openLoginScreen() {
+        
+    }
+    
+    func openMyProfile() {
+        
     }
 }
 

@@ -13,14 +13,6 @@ protocol SideMenuViewInput: class {
     func showTabBar(visible: Bool)
     func selectBar(with index: Int)
     func showAccountInfo(visible: Bool)
-    
-  /*  enum SelectableItem {
-        case accountInfo
-        case socialItem(
-    }
- */
-    
-    func selectItem(with index: Int)
 }
 
 protocol SideMenuViewOutput {
@@ -75,10 +67,6 @@ class SideMenuViewController: UIViewController, SideMenuViewInput, SideMenuSecti
     func selectBar(with index: Int) {
         socialButton?.isSelected = socialButton?.tag == index
         clientButton?.isSelected = clientButton?.tag == index
-    }
-    
-    func selectItem(with index: Int) {
-        
     }
     
     // MARK: UX
