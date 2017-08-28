@@ -66,16 +66,21 @@ struct MyFeedQuery {
 
 protocol PostServiceProtocol {
     
-    func fetchHome(query: HomeFeedQuery, completion: @escaping FetchResultHandler)
-    func fetchPopular(query: PopularFeedQuery, completion: @escaping FetchResultHandler)
-    func fetchRecent(query: RecentFeedQuery, completion: @escaping FetchResultHandler)
-    func fetchRecent(query: UserFeedQuery, completion: @escaping FetchResultHandler)
-    func fetchPopular(query: UserFeedQuery, completion: @escaping FetchResultHandler)
-    func fetchPost(post: PostHandle, completion: @escaping FetchResultHandler)
-    func fetchMyPosts(query: MyFeedQuery, completion: @escaping FetchResultHandler)
-    func fetchMyPopular(query: MyFeedQuery, completion: @escaping FetchResultHandler)
+    func fetchHome(query: HomeFeedQuery)
+    func fetchPopular(query: PopularFeedQuery)
+    func fetchRecent(query: RecentFeedQuery)
+    func fetchRecent(query: UserFeedQuery)
+    func fetchPopular(query: UserFeedQuery)
+    func fetchPost(post: PostHandle)
+    func fetchMyPosts(query: MyFeedQuery)
+    func fetchMyPopular(query: MyFeedQuery)
     
     func deletePost(post: PostHandle, completion: @escaping ((Result<Void>) -> Void))
+}
+
+protocol PostServiceDelegate: class {
+    
+    func didFetchHome(query: HomeFeedQuery, result: PostFetchResult)
 }
 
 extension PostServiceProtocol {
@@ -95,9 +100,11 @@ extension PostServiceProtocol {
 class TopicService: BaseService, PostServiceProtocol {
     
     private var imagesService: ImagesServiceType!
+    private var delegate: PostServiceDelegate!
     
-    init(imagesService: ImagesServiceType) {
+    init(imagesService: ImagesServiceType, delegate: PostServiceDelegate) {
         super.init()
+        self.delegate = delegate
         self.imagesService = imagesService
     }
     
@@ -150,38 +157,22 @@ class TopicService: BaseService, PostServiceProtocol {
         }
     }
     
-    private func processRequest(_ requestBuilder:RequestBuilder<FeedResponseTopicView>,
-                                                     completion: @escaping FetchResultHandler) {
-        
-        let requestURL = requestBuilder.URLString
-
-        requestBuilder.execute { (response, error) in
-            self.parseResponse(requestURL: requestURL,
-                               response: response?.body,
-                               error: error,
-                               completion: completion)
-        }
-    }
     
-    private func processCache(with requestBuilder:RequestBuilder<FeedResponseTopicView>,
-                                   completion: @escaping FetchResultHandler) {
-        
-        let requestURL = requestBuilder.URLString
-        
-        if let cachedResponse = cache.firstIncoming(ofType: FeedResponseTopicView.self, typeID: requestURL) {
-            self.parseResponse(response: cachedResponse, error: nil, completion: completion)
-        }
-    }
     
     // MARK: GET
     
-    func fetchHome(query: HomeFeedQuery, completion: @escaping FetchResultHandler) {
+    func fetchHome(query: HomeFeedQuery) {
         
         let request = SocialAPI.myFollowingGetTopicsWithRequestBuilder(authorization: authorization,
                                                                        cursor: query.cursor,
                                                                        limit: query.limit)
         
-        processCache(with: request, completion: completion)
+        processCache(with: request) { response, error in
+            self.parseResponse(requestURL: nil, response: response, error: error) { 
+                self.delegate.didFetchHome(query: query, result: <#T##PostFetchResult#>)
+            }
+            self.delegate.didFetchHome(query: query, result: <#T##PostFetchResult#>)
+        }
         processRequest(request, completion: completion)
     }
     
@@ -279,12 +270,38 @@ class TopicService: BaseService, PostServiceProtocol {
         }
     }
     
+    typealias FeedResponseHandler = ((response: FeedResponseTopicView?, error: Error?) -> ())
+    
     // MARK: Private
+    
+    private func processRequest(_ requestBuilder:RequestBuilder<FeedResponseTopicView>,
+                                completion: @escaping ProcessRequestHandler) {
+        
+        let requestURL = requestBuilder.URLString
+        
+        requestBuilder.execute { (response, error) in
+            completion()
+            self.parseResponse(requestURL: requestURL,
+                               response: response?.body,
+                               error: error,
+                               completion: completion)
+        }
+    }
+    
+    private func processCache(with requestBuilder:RequestBuilder<FeedResponseTopicView>,
+                              completion: @escaping FetchResultHandler) {
+        
+        let requestURL = requestBuilder.URLString
+        
+        if let cachedResponse = cache.firstIncoming(ofType: FeedResponseTopicView.self, typeID: requestURL) {
+            self.parseResponse(response: cachedResponse, error: nil, completion: completion)
+        }
+    }
     
     private func parseResponse(requestURL: String? = nil,
                                response: FeedResponseTopicView?,
-                               error: Error?,
-                               completion: FetchResultHandler) {
+                               error: Error?) -> PostFetchResult?
+    {
         
         var result = PostFetchResult()
         
@@ -294,9 +311,8 @@ class TopicService: BaseService, PostServiceProtocol {
             } else {
                 let message = error?.localizedDescription ?? L10n.Error.noItemsReceived
                 result.error = FeedServiceError.failedToFetch(message: message)
-                completion(result)
             }
-            return
+            return result
         }
         
         if let data = response.data {

@@ -19,8 +19,8 @@ protocol FeedModuleInteractorInput {
 
 protocol FeedModuleInteractorOutput: class {
     
-    func didFetch(feed: PostsFeed)
-    func didFetchMore(feed: PostsFeed)
+    func didFetch(feed: PostsFeed, feedType: FeedType)
+    func didFetchMore(feed: PostsFeed, feedType: FeedType)
     func didFail(error: FeedServiceError)
     func didStartFetching()
     func didFinishFetching()
@@ -36,12 +36,6 @@ class FeedModuleInteractor: FeedModuleInteractorInput {
     var pinsService: PinsServiceProtocol! = PinsService()
     weak var userHolder: UserHolder? = SocialPlus.shared
     
-    var isFetching = false {
-        didSet {
-            isFetching ? output.didStartFetching() : output.didFinishFetching()
-        }
-    }
-    
     private var isLoadingMore = false
 
     private lazy var fetchHandler: FetchResultHandler = { [weak self] result in
@@ -50,7 +44,7 @@ class FeedModuleInteractor: FeedModuleInteractorInput {
             return
         }
         
-        strongSelf.isFetching = false
+        strongSelf.output.didFinishFetching()
         
         guard result.error == nil else {
             strongSelf.output.didFail(error: result.error!)
@@ -60,21 +54,21 @@ class FeedModuleInteractor: FeedModuleInteractorInput {
         var feed = PostsFeed(items: result.posts, cursor: result.cursor)
         
         if strongSelf.isLoadingMore {
-            strongSelf.output.didFetchMore(feed: feed)
+            strongSelf.output.didFetchMore(feed: feed, feedType: T.)
         } else {
-            strongSelf.output.didFetch(feed: feed)
+            strongSelf.output.didFetch(feed: feed, feedType: <#FeedType#>)
         }
+    }
+    
+    struct fetchCallback {
+        let isMoreFetch: Bool
+        let handler: FetchResultHandler
     }
     
     func fetchPosts(limit: Int32? = nil, cursor: String? = nil, feedType: FeedType) {
         
-        guard isFetching == false else {
-            Logger.log("Cant fetch, already fetching..", event: .error)
-            return
-        }
-        
         isLoadingMore = cursor != nil
-        isFetching = true
+        output.didStartFetching()
    
         switch feedType {
             

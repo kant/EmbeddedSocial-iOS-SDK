@@ -96,7 +96,7 @@ struct PostsFeed {
 }
 
 // MARK: PostsFetchResult
-struct PostFetchResult {
+struct PostFetchResult{
     var posts: [Post] = [Post]()
     var error: FeedServiceError?
     var cursor: String? = nil

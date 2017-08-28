@@ -206,6 +206,18 @@ class FeedModulePresenter: FeedModuleInput, FeedModuleViewOutput, FeedModuleInte
     
     // MARK: Private
     
+    private func appendWithReplacing(original: inout [Post], appending: [Post]) {
+        
+        for appendingItem in appending {
+            
+            if let index = original.index(of: appendingItem) {
+                original[index] = appendingItem
+            } else {
+                original.append(appendingItem)
+            }
+        }
+    }
+    
     fileprivate func isHome() -> Bool {
         return feedType == .home
     }
@@ -371,16 +383,16 @@ class FeedModulePresenter: FeedModuleInput, FeedModuleViewOutput, FeedModuleInte
     }
     
     // MARK: FeedModuleInteractorOutput
-    func didFetch(feed: PostsFeed) {
+    func didFetch(feed: PostsFeed, feedType: FeedType) {
         cursor = feed.cursor
         items = feed.items
         
         view.reload()
     }
     
-    func didFetchMore(feed: PostsFeed) {
+    func didFetchMore(feed: PostsFeed, feedType: FeedType) {
         cursor = feed.cursor
-        items.append(contentsOf: feed.items)
+        appendWithReplacing(original: &items, appending: feed.items)
         
         view.reload()
     }
