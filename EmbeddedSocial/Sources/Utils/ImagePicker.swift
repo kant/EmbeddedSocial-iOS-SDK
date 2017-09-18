@@ -31,9 +31,7 @@ class ImagePicker: NSObject {
         actionSheet.addAction(cancelAction)
         
         let takeNewPhotoAction = UIAlertAction(title: L10n.ImagePicker.takePhoto, style: .default) { (_) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                self.showImagePicker(sourceType: .camera)
-            }
+            self.showImagePicker(sourceType: .camera)
         }
         actionSheet.addAction(takeNewPhotoAction)
         
