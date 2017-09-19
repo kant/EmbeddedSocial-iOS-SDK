@@ -256,6 +256,7 @@ struct CommentFetchResult {
     var comments = [Comment]()
     var error: CommentsServiceError?
     var cursor: String?
+    var isFromCache: Bool?
 }
 
 struct CommentViewModel {

@@ -17,6 +17,8 @@ class PostDetailPresenter: PostDetailViewOutput, PostDetailInteractorOutput, Pos
 
     var comments = [Comment]()
     
+    var newComments = [Comment]()
+    
     private var formatter = DateFormatterTool()
     private var cursor: String?
     private var shouldFetchRestOfComments = false
@@ -49,6 +51,7 @@ class PostDetailPresenter: PostDetailViewOutput, PostDetailInteractorOutput, Pos
     
     // MARK: PostDetailInteractorOutput
     func didFetch(comments: [Comment], cursor: String?) {
+        newComments = comments
         self.cursor = cursor
         self.comments = comments
         self.comments.sort(by: { $0.0.createdTime! < $0.1.createdTime! })
@@ -59,20 +62,51 @@ class PostDetailPresenter: PostDetailViewOutput, PostDetailInteractorOutput, Pos
     func didFetchMore(comments: [Comment], cursor: String?) {
         
         dataIsFetching = false
-        appendWithReplacing(original: &self.comments, appending: comments)
+        
+        if cursor == self.cursor {
+            replace(comments: comments)
+        } else {
+            appendWithReplacing(original: &self.comments, appending: comments)
+        }
+        
+        newComments = comments
+        
+        
         self.comments.sort(by: { $0.0.createdTime! < $0.1.createdTime! })
         self.cursor = cursor
         stopLoading()
-        if cursor != nil && shouldFetchRestOfComments == true {
-            self.fetchMore()
-        } else if shouldFetchRestOfComments == true {
-            view.reloadTable(scrollType: .bottom)
-            shouldFetchRestOfComments = false
+        if cursor == self.cursor {
+            view.reloadComments()
         } else {
             view.updateComments()
-            view.updateLoadingCell()
         }
         
+        view.updateLoadingCell()
+//        if cursor != nil && shouldFetchRestOfComments == true {
+//            self.fetchMore()
+//        } else if shouldFetchRestOfComments == true {
+//            view.reloadTable(scrollType: .bottom)
+//            shouldFetchRestOfComments = false
+//        } else {
+//            view.updateComments()
+//            view.updateLoadingCell()
+//        }
+        
+    }
+    
+    private func replace(comments: [Comment]) {
+//        for (oldComment, newComment) in zip(newComments, comments) {
+//            
+//        }
+        for oldComment in newComments {
+            guard let index = self.comments.index(of: oldComment) else {
+                continue
+            }
+            
+            self.comments.remove(at: index)
+        }
+        
+        self.comments.append(contentsOf: comments)
     }
     
     private func stopLoading() {

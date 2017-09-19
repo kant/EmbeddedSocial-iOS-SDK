@@ -15,6 +15,10 @@ fileprivate enum CommentsSections: Int {
 }
 
 class PostDetailViewController: BaseViewController, PostDetailViewInput {
+    func reloadComments() {
+        collectionView.reloadSections(IndexSet(integer: CommentsSections.comments.rawValue))
+    }
+
 
     @IBOutlet weak var collectionView: UICollectionView!
     var output: PostDetailViewOutput!

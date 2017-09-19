@@ -15,6 +15,11 @@ class PostDetailInteractor: PostDetailInteractorInput {
     var topicService: PostServiceProtocol?
     var isLoading = false
     
+    private var pages: [CommentsPage] = []
+    private var pendingPages: Set<String> = Set()
+    
+    private let queue = DispatchQueue(label: "PostDetailInteractor-queue")
+    
     func fetchComments(topicHandle: String, cursor: String?, limit: Int32) {
             self.isLoading = true
             self.commentsService?.fetchComments(topicHandle: topicHandle, cursor: cursor, limit: limit, cachedResult: { (cachedResult) in
@@ -78,5 +83,40 @@ class PostDetailInteractor: PostDetailInteractorInput {
             print("error posting comment")
         })
         
+    }
+    
+    private func getNextCommentsPage(skipCache: Bool, completion: @escaping (Result<[Comment]>) -> Void) {
+        isLoading = true
+        
+        let pageID = UUID().uuidString
+        pendingPages.insert(pageID)
+        
+        
+    }
+    
+    private func addUniquePage(_ page: CommentsPage) {
+        queue.sync {
+            if let index = pages.index(of: page) {
+                pages[index] = page
+            } else {
+                pages.append(page)
+            }
+        }
+    }
+}
+
+extension PostDetailInteractor {
+    
+    struct CommentsPage: Hashable {
+        let uid: String
+        let response: CommentFetchResult
+        
+        var hashValue: Int {
+            return uid.hashValue
+        }
+        
+        static func ==(lhs: CommentsPage, rhs: CommentsPage) -> Bool {
+            return lhs.uid == rhs.uid
+        }
     }
 }
