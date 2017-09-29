@@ -122,7 +122,6 @@ class PostCell: UICollectionViewCell, PostCellProtocol {
     }
     
     func configure(with data: PostViewModel, collectionView: UICollectionView?) {
-        
         viewModel = data
         self.collectionView = collectionView
         

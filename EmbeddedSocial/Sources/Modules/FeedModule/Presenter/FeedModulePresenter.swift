@@ -187,7 +187,6 @@ class FeedModulePresenter: FeedModuleInput, FeedModuleViewOutput, FeedModuleInte
     
     func didTapChangeLayout() {
         layout = layout.flipped
-        view.setLayout(type: layout)
     }
     
     // MARK: FeedModuleInput
@@ -307,6 +306,7 @@ class FeedModulePresenter: FeedModuleInput, FeedModuleViewOutput, FeedModuleInte
                                           cellType: layout.cellType,
                                           actionHandler: onAction)
     
+        Logger.log(path.row, layout.cellType, event: .veryImportant)
         return itemViewModel
     }
     

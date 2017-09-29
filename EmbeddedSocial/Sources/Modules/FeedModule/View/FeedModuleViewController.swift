@@ -160,7 +160,7 @@ class FeedModuleViewController: UIViewController, FeedModuleViewInput {
     
     private func onUpdateLayout(type: FeedModuleLayoutType, animated: Bool = false) {
         
-        collectionView.reloadData()
+        Logger.log(type, event: .veryImportant)
         collectionView.collectionViewLayout.invalidateLayout()
         
         // switch layout
@@ -176,6 +176,9 @@ class FeedModuleViewController: UIViewController, FeedModuleViewInput {
                 collectionView.setCollectionViewLayout(listLayout, animated: animated)
             }
         }
+        
+        collectionView.reloadData()
+        
     }
     
     private func onUpdateBounds() {
@@ -375,7 +378,6 @@ extension FeedModuleViewController: UICollectionViewDelegate, UICollectionViewDa
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.cellType, for: indexPath) as? PostCellProtocol else {
             fatalError("Wrong cell")
         }
-        
         cell.configure(with: item, collectionView: collectionView)
         
         return cell as! UICollectionViewCell
