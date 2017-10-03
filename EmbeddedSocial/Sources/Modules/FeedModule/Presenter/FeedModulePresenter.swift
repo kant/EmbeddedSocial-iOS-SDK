@@ -302,6 +302,7 @@ class FeedModulePresenter: FeedModuleInput, FeedModuleViewOutput, FeedModuleInte
             isTrimmed = true
         }
         
+        Logger.log(path, event: .veryImportant)
         let itemViewModel = PostViewModel(with: item,
                                           isTrimmed: isTrimmed,
                                           cellType: layout.cellType,

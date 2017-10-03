@@ -176,11 +176,13 @@ class PostCell: UICollectionViewCell, PostCellProtocol {
         }
         
         // append text view height (Optimization possible)
-        let dynamicHeight = dynamicElement.systemLayoutSizeFitting(self.bounds.size).height
-    
-        var result = [staticElementsHeight, dynamicHeight].reduce(0.0, +)
+        let dynamicSize = dynamicElement.systemLayoutSizeFitting(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude))
+        //dynamicElement.setNeedsLayout()
+        //dynamicElement.layoutIfNeeded()
         
-        return result
+        let dynamicHeight = dynamicSize.height + 10 // layout always returns 10pixel less
+        
+        return [staticElementsHeight, dynamicHeight].reduce(0.0, +)
     }
     
     // MARK: Private

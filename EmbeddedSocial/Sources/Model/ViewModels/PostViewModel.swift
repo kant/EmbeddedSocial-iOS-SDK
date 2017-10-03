@@ -41,8 +41,8 @@ struct PostViewModel {
         self.isTrimmed = isTrimmed
         topicHandle = post.topicHandle
         userName = User.fullName(firstName: post.firstName, lastName: post.lastName)
-        title = post.title ?? ""
-        text = post.text ?? ""
+        title = post.title
+        text = post.text
         likedBy = ""
         
         totalLikes = L10n.Post.likesCount(post.totalLikes)

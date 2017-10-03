@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="17A365" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,14 +12,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="PostCell" customModule="EmbeddedSocial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="364" height="542"/>
+            <rect key="frame" x="0.0" y="0.0" width="403" height="1533"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEZ-HU-KUq" userLabel="container">
-                    <rect key="frame" x="0.0" y="0.0" width="364" height="502"/>
+                    <rect key="frame" x="0.0" y="0.0" width="403" height="1287"/>
                     <subviews>
                         <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="oqe-ch-5n3" userLabel="header">
-                            <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="403" height="50"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="500" image="user_photo_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="bYI-rM-xRs">
                                     <rect key="frame" x="20" y="10" width="30" height="30"/>
@@ -38,13 +37,13 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="500" text="1h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIe-cI-XjE">
-                                    <rect key="frame" x="293.5" y="16.5" width="15.5" height="18"/>
+                                    <rect key="frame" x="332.5" y="16.5" width="15.5" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAQ-A1-E3u">
-                                    <rect key="frame" x="324" y="15" width="20" height="20"/>
+                                    <rect key="frame" x="363" y="15" width="20" height="20"/>
                                     <accessibility key="accessibilityConfiguration" identifier="Post Menu" label="Post Menu"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="hAk-Bk-rdF"/>
@@ -56,7 +55,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tng-AR-z1W">
-                                    <rect key="frame" x="0.0" y="0.0" width="273" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="312" height="50"/>
                                     <connections>
                                         <action selector="onProfileInfo:" destination="iN0-l3-epB" eventType="touchUpInside" id="nmz-6q-RKh"/>
                                     </connections>
@@ -81,24 +80,24 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="iJH-I2-d58" userLabel="postcontent">
-                            <rect key="frame" x="15" y="230" width="334" height="212"/>
+                            <rect key="frame" x="15" y="230" width="373" height="997"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="998" text="Smooth Sailing Over Calm Waters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYk-wD-2lQ">
-                                    <rect key="frame" x="0.0" y="15" width="334" height="17"/>
+                                    <rect key="frame" x="0.0" y="15" width="373" height="17"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="249" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhP-eN-hI9" customClass="ReadMoreTextView" customModule="EmbeddedSocial" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="52" width="334" height="150"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <rect key="frame" x="0.0" y="52" width="373" height="935"/>
+                                    <color key="backgroundColor" red="0.048068008628962211" green="1" blue="0.089629826917521416" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <accessibility key="accessibilityConfiguration" identifier="Teaser" label="Teaser"/>
-                                    <string key="text">Well, if i had a boat... what do you all think of my painting though? #DreaBoatWell, if i had a boat... what do you all think of my painting though? #DreaBoatWell, if i had a boat... what do you all think of my painting though? #DreaBoatWell, if i had a boat... what do you all think of my painting though? #DreaBoatWell, if i had a boat... what do you all think of my painting though? #DreaBoat</string>
+                                    <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae urna lacinia, sodales leo non, scelerisque mauris. Aenean a augue tempor, pharetra ipsum ac, rhoncus erat. Nunc sit amet tempor turpis. Integer lacus purus, finibus vel ex vel, blandit cursus diam. Nulla maximus augue blandit accumsan facilisis. Aliquam vitae erat eget diam auctor placerat eu ut lacus. Donec vel pharetra justo, eget cursus lacus. Sed in lectus arcu. Sed ullamcorper nisl non nulla lobortis tempor. Aliquam a accumsan magna. Duis mattis nulla nec elit feugiat maximus. Phasellus blandit diam non risus consequat, id lobortis felis porttitor. Donec vitae elit ut libero luctus dignissim. Sed bibendum, eros nec ullamcorper ornare, magna nisi luctus est, condimentum rhoncus dui nulla ac diam. Sed justo odio, pellentesque eu ante nec, tincidunt faucibus augue. Suspendisse potenti. Vestibulum egestas quis neque sed sollicitudin. Duis eu orci nunc. Sed commodo bibendum eros et convallis. Nunc elementum sapien lectus, sit amet lobortis lectus condimentum id. Etiam a tellus sit amet orci posuere pellentesque non id massa. Sed mollis eleifend hendrerit. Suspendisse semper sit amet purus in commodo. Aenean fermentum pellentesque iaculis. Praesent pellentesque eros at ex auctor bibendum ac at enim. Donec enim risus, mattis et mattis in, porttitor vestibulum magna. Cras leo lacus, ornare sed pellentesque nec, blandit at est. Aenean luctus vulputate leo, at mattis odio lobortis quis. Duis luctus posuere purus vitae porta. Nullam pretium odio neque, ac placerat mauris aliquam quis. Sed viverra massa sem, a efficitur nisl dignissim eleifend. Praesent vel fringilla lacus. In sed tristique arcu, ut bibendum massa. Sed eget tincidunt nisl. Aliquam erat volutpat. Nulla feugiat neque et massa ultricies, sed consequat sapien facilisis. Sed ac vestibulum est. Proin eu sodales ipsum. Phasellus euismod semper ullamcorper. In auctor dolor sed sapien egestas, eget consequat sem accumsan. Morbi porttitor elementum dui ac efficitur. Nullam ut tincidunt ex. In at purus eleifend, feugiat nulla a, feugiat turpis. Duis eget enim urna. Mauris luctus lorem et ligula condimentum, vel bibendum odio venenatis. Nam cursus nulla id egestas sodales. Donec pulvinar vestibulum efficitur. Fusce a sapien dolor. In ut leo orci. Nunc tincidunt risus id ipsum fringilla, a molestie erat malesuada. Donec cursus imperdiet risus, varius pellentesque tortor fermentum at. Integer sagittis augue et commodo congue. Sed finibus ex arcu, non dapibus nunc varius sed. Sed ante nulla, fringilla sit amet vehicula sed, molestie feugiat erat. Proin id arcu dictum lorem efficitur auctor. Aenean non massa augue. Fusce eget tortor sit amet orci consectetur malesuada non eleifend augue. Quisque condimentum nunc vel enim sagittis blandit. Aenean non purus pretium ipsum auctor eleifend in interdum tellus. Suspendisse ullamcorper ipsum sit amet condimentum lobortis.</mutableString>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.94874589103125373" green="1" blue="0.19675628684247393" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstItem="WYk-wD-2lQ" firstAttribute="leading" secondItem="iJH-I2-d58" secondAttribute="leading" id="6vq-lL-fQu"/>
                                 <constraint firstAttribute="trailing" secondItem="WYk-wD-2lQ" secondAttribute="trailing" id="8GG-yZ-KDO"/>
@@ -110,7 +109,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Ugb-5x-70X" userLabel="footer">
-                            <rect key="frame" x="0.0" y="442" width="364" height="60"/>
+                            <rect key="frame" x="0.0" y="1227" width="403" height="60"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2C6-WJ-LvS" userLabel="like">
                                     <rect key="frame" x="15" y="8" width="44" height="44"/>
@@ -154,33 +153,33 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_liked" translatesAutoresizingMaskIntoConstraints="NO" id="udS-oz-1h8" userLabel="liked_icon">
-                                    <rect key="frame" x="197" y="25" width="10" height="10"/>
+                                    <rect key="frame" x="236" y="25" width="10" height="10"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="10" id="Mu7-FR-SnE"/>
                                         <constraint firstAttribute="width" constant="10" id="erh-Aq-L0l"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLh-Pw-0g4" userLabel="liked_counter">
-                                    <rect key="frame" x="212" y="23" width="36.5" height="14.5"/>
+                                    <rect key="frame" x="251" y="23" width="36.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xB4-f1-3t5">
-                                    <rect key="frame" x="197" y="8" width="51" height="44"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xB4-f1-3t5" userLabel="likesListButton">
+                                    <rect key="frame" x="236" y="8" width="51" height="44"/>
                                     <connections>
                                         <action selector="onLikesList:" destination="iN0-l3-epB" eventType="touchUpInside" id="wrF-va-9lf"/>
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_comment" translatesAutoresizingMaskIntoConstraints="NO" id="yvr-7D-iLq" userLabel="commented_icon">
-                                    <rect key="frame" x="258.5" y="25" width="10" height="10"/>
+                                    <rect key="frame" x="297.5" y="25" width="10" height="10"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="10" id="Eu2-uk-4tH"/>
                                         <constraint firstAttribute="height" constant="10" id="QQb-Dg-9ru"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0a-2Y-w6G" userLabel="commented_counter">
-                                    <rect key="frame" x="273.5" y="23" width="75.5" height="14.5"/>
+                                    <rect key="frame" x="312.5" y="23" width="75.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -211,7 +210,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kI-kt-ADv">
-                            <rect key="frame" x="0.0" y="50" width="364" height="180"/>
+                            <rect key="frame" x="0.0" y="50" width="403" height="180"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="180" id="IKi-3a-VjQ"/>
                             </constraints>
@@ -263,13 +262,13 @@
                 <outletCollection property="staticHeigthElements" destination="3kI-kt-ADv" collectionClass="NSMutableArray" id="8NC-73-82r"/>
                 <outletCollection property="staticHeigthElements" destination="Ugb-5x-70X" collectionClass="NSMutableArray" id="4NW-ak-g0T"/>
             </connections>
-            <point key="canvasLocation" x="100" y="-110"/>
+            <point key="canvasLocation" x="119.5" y="385.5"/>
         </view>
     </objects>
     <resources>
-        <image name="icon_comment" width="48" height="48"/>
+        <image name="icon_comment" width="36" height="36"/>
         <image name="icon_dots" width="36" height="36"/>
-        <image name="icon_liked" width="48" height="48"/>
+        <image name="icon_liked" width="36" height="36"/>
         <image name="icon_liked_active" width="48" height="48"/>
         <image name="icon_pin" width="48" height="48"/>
         <image name="icon_pin_active" width="48" height="48"/>

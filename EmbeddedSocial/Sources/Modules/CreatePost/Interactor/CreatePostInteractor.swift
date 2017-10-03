@@ -25,7 +25,7 @@ class CreatePostInteractor: CreatePostInteractorInput {
              user: user,
              imageUrl: photo?.url,
              imageHandle: photo?.uid,
-             title: title,
+             title: title ?? "No title",
              text: body,
              deepLink: nil,
              totalLikes: 0,

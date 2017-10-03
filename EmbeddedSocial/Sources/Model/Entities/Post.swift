@@ -13,8 +13,8 @@ struct Post {
     var imageUrl: String?
     var imageHandle: String?
     
-    var title: String?
-    var text: String?
+    var title: String
+    var text: String
 
     var deepLink: String?
     
