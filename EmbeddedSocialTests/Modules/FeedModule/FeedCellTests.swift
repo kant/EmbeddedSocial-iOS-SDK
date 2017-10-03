@@ -6,6 +6,8 @@
 import XCTest
 @testable import EmbeddedSocial
 
+// Test should not be included.
+
 class FeedCellTests: XCTestCase {
     
     
